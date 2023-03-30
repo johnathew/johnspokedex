@@ -25,7 +25,6 @@ const Pokemon = () => {
 
   return (
     <div className="flex flex-col justify-center items-center text-slate-50">
-      <h1>Pokedex Search</h1>
       <h2>Enter a pokedex value below</h2>
       <form onSubmit={handlefetch}>
         <input
