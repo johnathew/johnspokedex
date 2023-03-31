@@ -1,5 +1,10 @@
 import React, { useReducer, useState } from "react";
-import { ACTION_TYPES } from "./pokemonActionTypes";
+import {
+  ACTION_TYPES,
+  IPokemon,
+  PokemonType,
+  PokemonTypes,
+} from "./pokemonActionTypes";
 import { INITIAL_STATE, pokemonReducer } from "./pokemonReducer";
 
 const Pokemon = () => {
@@ -24,27 +29,42 @@ const Pokemon = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center text-slate-50">
+    <div className="flex flex-col  items-center text-black h-full dark:text-white dark:bg-slate-800 bg-gray-50 w-full">
       <h2>Enter a pokedex value below</h2>
       <form onSubmit={handlefetch}>
         <input
           type="number"
           placeholder="Enter a pokedex value"
           value={pokedexVal}
-          min="0"
+          min="1"
           max="1010"
           onChange={(event) => setPokedexVal(+event.target.value)}
-          className="border w-12 text-black"
+          className="border w-16 text-black"
         />
         <button className="bg-black text-yellow-100 font-light rounded-md p-1">
-          Click me for pokemon
+          Click me for Pokemon
         </button>
-        <p>{state.pokemon.name}</p>
+      </form>
+      <div className="w-full flex h-1/5 items-center flex-col p">
+        <p className="font-semibold text-2xl">Name: {state.pokemon.name}</p>
         <img
           src={state.pokemon?.sprites?.front_default}
-          className="w-40 h-auto"
+          className="w-40 h-auto drop-shadow-2xl"
         />
-      </form>
+      </div>
+      <h2 className="border-b font-bold text-lg">Type(s)</h2>
+      <ul className="flex gap-2">
+        {state.pokemon.types?.map((type: PokemonTypes, index: number) => {
+          return (
+            <p
+              key={index}
+              className={`bg-gray-200 text-black rounded-md p-1 mt-2 items-center`}
+            >
+              {type?.type?.name}
+            </p>
+          );
+        })}
+      </ul>
     </div>
   );
 };

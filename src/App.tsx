@@ -12,7 +12,7 @@ function App() {
   };
   return (
     <div className={`h-screen w-full m-0 p-0 ${darkMode ? "dark" : ""}`}>
-      <Header toggleDarkMode={toggleDarkMode} />
+      <Header toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
       <Pokemon />
     </div>
   );

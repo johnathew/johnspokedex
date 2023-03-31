@@ -7,6 +7,18 @@ export const INITIAL_STATE = {
     sprites: {
       front_default: "",
     },
+    types: [
+      {
+        type: {
+          name: "",
+        },
+      },
+      {
+        type: {
+          name: "",
+        },
+      },
+    ],
   },
   error: false,
 };
@@ -20,7 +32,7 @@ export const pokemonReducer = (
       return {
         loading: true,
         error: false,
-        pokemon: { name: "" },
+        pokemon: { ...state },
       };
     case ACTION_TYPES.FETCH_SUCCESS:
       return {

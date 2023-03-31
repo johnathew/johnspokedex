@@ -12,8 +12,17 @@ export interface PokemonReducer {
 export interface IPokemon {
   name: string;
   sprites: PokemonImg;
+  types?: PokemonTypes[];
 }
 
 export interface PokemonImg {
   front_default: string;
+}
+
+export interface PokemonTypes {
+  type?: PokemonType;
+}
+
+export interface PokemonType {
+  name?: string;
 }
