@@ -58,7 +58,26 @@ const Pokemon = () => {
           return (
             <p
               key={index}
-              className={`bg-gray-200 text-black rounded-md p-1 mt-2 items-center`}
+              className={`${type.type?.name === "fire" && "bg-red-600"}
+              ${type.type?.name === "grass" && "bg-green-500"}
+              ${type.type?.name === "poison" && "bg-purple-700"}
+              ${type.type?.name === "water" && "bg-blue-700"}
+              ${type.type?.name === "bug" && "bg-lime-500"}
+              ${type.type?.name === "normal" && "bg-amber-600"}
+              ${type.type?.name === "electric" && "bg-yellow-500"}
+              ${type.type?.name === "ground" && "bg-amber-800"}
+              ${type.type?.name === "ice" && "bg-blue-300"}
+              ${type.type?.name === "ghost" && "bg-purple-400"}
+              ${type.type?.name === "dark" && "bg-gray-900"}
+              ${type.type?.name === "rock" && "bg-amber-900"}
+              ${type.type?.name === "psychic" && "bg-pink-700"}
+              ${type.type?.name === "dragon" && "bg-violet-900"}
+              ${type.type?.name === "fighting" && "bg-red-900"}
+              ${type.type?.name === "fairy" && "bg-pink-300"}
+              ${type.type?.name === "steel" && "bg-gray-600"}
+              ${
+                type.type?.name === "flying" && "bg-purple-400"
+              } rounded-md p-2 mt-2`}
             >
               {type?.type?.name}
             </p>
