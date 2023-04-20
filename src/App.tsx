@@ -3,6 +3,10 @@ import "./App.css";
 import Header from "./components/Header";
 
 import Pokemon from "./Pokemon";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
+const queryClient = new QueryClient();
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -11,10 +15,15 @@ function App() {
     setDarkMode((prevMode) => !prevMode);
   };
   return (
-    <div className={`h-screen w-full m-0 p-0 ${darkMode ? "dark" : ""}`}>
-      <Header toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
-      <Pokemon />
-    </div>
+    <>
+      <QueryClientProvider client={queryClient}>
+        <div className={`h-full w-full m-0 p-0 ${darkMode ? "dark" : ""}`}>
+          <Header toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
+          <Pokemon />
+        </div>
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
+    </>
   );
 }
 
