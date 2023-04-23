@@ -1,9 +1,17 @@
-import { ACTION_TYPES, IPokemon, PokemonReducer } from "./pokemonActionTypes";
-
+import { createContext, useReducer } from "react";
+import {
+    ACTION_TYPES,
+    IPokemon,
+    PokeContext,
+    PokemonReducer,
+  } from "./pokemonActionTypes";
 export const INITIAL_STATE = {
   loading: false,
   pokemon: {
     name: "",
+    height: 0,
+    weight: 0,
+    base_experience: 0,
     sprites: {
       front_default: "",
     },
@@ -22,9 +30,13 @@ export const INITIAL_STATE = {
   },
   error: false,
 };
+export const PokemonContext = createContext<PokeContext>(INITIAL_STATE);
+export const PokemonDispatchContext = createContext(null);
 
+
+//todo: fix the 'any' type from the pokemonReducer function
 export const pokemonReducer = (
-  state: IPokemon,
+  state: IPokemon[],
   action: PokemonReducer
 ): any => {
   switch (action.type) {
@@ -50,3 +62,15 @@ export const pokemonReducer = (
       return state;
   }
 };
+
+// export const PokemonProvider = ({children}) => {
+//     const [pokemon, dispatch] = useReducer(pokemonReducer, INITIAL_STATE)
+
+//     return (
+//         <PokemonContext.Provider value={pokemon}>
+//             <PokemonDispatchContext.Provider value={dispatch}>
+//                 {children}
+//             </PokemonDispatchContext.Provider>
+//         </PokemonContext.Provider>
+//     )
+// }

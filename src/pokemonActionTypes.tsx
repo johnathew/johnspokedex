@@ -6,11 +6,18 @@ export const enum ACTION_TYPES {
 
 export interface PokemonReducer {
   type: ACTION_TYPES;
-  payload?: IPokemon[];
+  payload?: PokeContext;
+}
+
+export interface PokeContext {
+  pokemon: IPokemon
 }
 
 export interface IPokemon {
   name: string;
+  height: number,
+  weight: number,
+  base_experience: number;
   sprites: PokemonImg;
   types?: PokemonTypes[];
 }
