@@ -15,6 +15,10 @@ export const INITIAL_STATE = {
     sprites: {
       front_default: "",
     },
+    species: {
+        name: "",
+        url: "",
+    },
     types: [
       {
         type: {

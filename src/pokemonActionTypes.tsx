@@ -10,13 +10,17 @@ export interface PokemonReducer {
 }
 
 export interface PokeContext {
-  pokemon: IPokemon
+  pokemon: IPokemon;
 }
 
 export interface IPokemon {
   name: string;
-  height: number,
-  weight: number,
+  height: number;
+  weight: number;
+  species: {
+    name: string;
+    url: string;
+  };
   base_experience: number;
   sprites: PokemonImg;
   types?: PokemonTypes[];
