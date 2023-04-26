@@ -26,36 +26,36 @@ const Pokemon = () => {
   };
 
   return (
-<PokemonContext.Provider value={state}>
-        <div className="flex flex-col  items-center text-black h-screen dark:text-white dark:bg-slate-800 bg-gray-50 w-full p-10">
-          <h2>Enter a pokedex value below</h2>
-          <form onSubmit={handlefetch}>
-            <input
-              type="number"
-              placeholder="Enter a pokedex value"
-              value={pokedexVal}
-              min="1"
-              max="1010"
-              onChange={(event) => setPokedexVal(+event.target.value)}
-              className="border w-16 text-black"
-            />
-            <button className="bg-black text-yellow-100 font-light rounded-md p-1">
-              Click me for Pokemon
-            </button>
-          </form>
-          <div className="w-full flex h-1/5 items-center flex-col">
-            <p className="font-semibold text-2xl">Name: {state.pokemon.name}</p>
-            <img
-              src={state.pokemon?.sprites?.front_default}
-              className="w-44 h-auto drop-shadow-2xl"
-            />
-            <h2 className="border-b font-bold text-lg">Type(s)</h2>
-            <ul className="flex gap-2 text-white">
-              {state.pokemon.types?.map((type: PokemonTypes, index: number) => {
-                return (
-                  <p
-                    key={index}
-                    className={`${type.type?.name === "fire" && "bg-red-600"}
+    <PokemonContext.Provider value={state}>
+      <div className="flex flex-col  items-center text-black h-screen dark:text-white dark:bg-slate-800 bg-gray-50 w-full p-10">
+        <h2>Enter a pokedex value below</h2>
+        <form onSubmit={handlefetch}>
+          <input
+            type="number"
+            placeholder="Enter a pokedex value"
+            value={pokedexVal}
+            min="1"
+            max="1010"
+            onChange={(event) => setPokedexVal(+event.target.value)}
+            className="border w-16 text-black"
+          />
+          <button className="bg-black text-yellow-100 font-light rounded-md p-1">
+            Click me for Pokemon
+          </button>
+        </form>
+        <div className="w-full flex h-1/5 items-center flex-col">
+          <p className="font-semibold text-2xl">Name: {state.pokemon.name}</p>
+          <img
+            src={state.pokemon?.sprites?.front_default}
+            className="w-44 h-auto drop-shadow-2xl"
+          />
+          <h2 className="border-b font-bold text-lg">Type(s)</h2>
+          <ul className="flex gap-2 text-white">
+            {state.pokemon.types?.map((type: PokemonTypes, index: number) => {
+              return (
+                <p
+                  key={index}
+                  className={`${type.type?.name === "fire" && "bg-red-600"}
               ${type.type?.name === "grass" && "bg-green-500"}
               ${type.type?.name === "poison" && "bg-purple-700"}
               ${type.type?.name === "water" && "bg-blue-700"}
@@ -75,16 +75,16 @@ const Pokemon = () => {
               ${
                 type.type?.name === "flying" && "bg-purple-400"
               } rounded-md p-2 mt-2`}
-                  >
-                    {type?.type?.name}
-                  </p>
-                );
-              })}
-            </ul>
-            <PokemonDetails />
-          </div>
+                >
+                  {type?.type?.name}
+                </p>
+              );
+            })}
+          </ul>
+          <PokemonDetails />
         </div>
-      </PokemonContext.Provider>
+      </div>
+    </PokemonContext.Provider>
   );
 };
 
