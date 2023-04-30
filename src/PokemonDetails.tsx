@@ -1,39 +1,26 @@
-import { JSXElementConstructor, useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { PokemonContext } from "./PokemonContext";
 import { PokeContext } from "./pokemonActionTypes";
-import axios from "axios";
+import { FaWeightHanging } from "react-icons/fa";
+
 import { useData } from "./hooks/useData";
 
 const PokemonDetails = () => {
-  // const [flavorText, setFlavorText] = useState<string[]>("");
-
   const pokemonData: PokeContext = useContext(PokemonContext);
-
-  const sample: any = useData(`${pokemonData.pokemon.species?.url}`)
-
+  const sample: any = useData(`${pokemonData?.pokemon.species?.url}`);
 
   return (
     <div>
-      <p>Height: {pokemonData.pokemon.height}"</p>
-      <p>Weight: {pokemonData.pokemon.weight} lbs.</p>
+      <div></div>
+      <p>{pokemonData.pokemon.height}"</p>
+      <div className="flex gap-x-2 justify-center items-center">
+        {" "}
+        <FaWeightHanging className="text-yellow-300" /> <p>{pokemonData.pokemon.weight} lbs.</p>
+      </div>
+
       <p>{sample?.flavor_text} </p>
     </div>
   );
 };
 
 export default PokemonDetails;
-
-
-
-
-// if (pokemonData.pokemon.species?.url.length > 1) {
-//   const test = axios
-//     .get()
-//     .then((res) => {
-//       return res.data.flavor_text_entries.find(
-//         (lang) => lang.language.name === "en"
-//       );
-//     })
-//     .catch((error) => console.log(error));
-//     return console.log(test)
-// }

@@ -1,7 +1,7 @@
 import React, { useReducer, useState } from "react";
-import { ACTION_TYPES, PokemonTypes } from "./pokemonActionTypes";
+import { ACTION_TYPES, IPokemon, PokemonTypes, } from "./pokemonActionTypes";
 import { INITIAL_STATE, pokemonReducer } from "./PokemonContext";
-import { PokemonContext, PokemonDispatchContext } from "./PokemonContext";
+import { PokemonContext } from "./PokemonContext";
 import PokemonDetails from "./PokemonDetails";
 
 const Pokemon = () => {
@@ -44,11 +44,18 @@ const Pokemon = () => {
           </button>
         </form>
         <div className="w-full flex h-1/5 items-center flex-col">
-          <p className="font-semibold text-2xl">Name: {state.pokemon.name}</p>
-          <img
-            src={state.pokemon?.sprites?.front_default}
-            className="w-44 h-auto drop-shadow-2xl"
-          />
+          <p className="font-semibold text-2xl">
+            Name:{" "}
+            {state?.pokemon?.name?.charAt(0).toUpperCase() +
+              state?.pokemon?.name?.slice(1)}
+          </p>
+          <div className="bg-gray-300 w-auto dark:border-white border-[15px] border-gray-800">
+            <img
+              src={state.pokemon?.sprites?.front_default}
+              className="w-44 h-auto drop-shadow-2xl"
+              placeholder="blur"
+            />
+          </div>
           <h2 className="border-b font-bold text-lg">Type(s)</h2>
           <ul className="flex gap-2 text-white">
             {state.pokemon.types?.map((type: PokemonTypes, index: number) => {

@@ -12,12 +12,13 @@ export const INITIAL_STATE = {
     height: 0,
     weight: 0,
     base_experience: 0,
+    id: 0,
     sprites: {
       front_default: "",
     },
     species: {
         name: "",
-        url: "",
+        url: ""
     },
     types: [
       {
@@ -40,7 +41,7 @@ export const PokemonDispatchContext = createContext(null);
 
 //todo: fix the 'any' type from the pokemonReducer function
 export const pokemonReducer = (
-  state: IPokemon[],
+  state: IPokemon,
   action: PokemonReducer
 ): any => {
   switch (action.type) {

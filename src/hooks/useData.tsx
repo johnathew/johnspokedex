@@ -1,4 +1,4 @@
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import { useEffect, useState } from "react";
 
 export const useData = (url: string) => {
@@ -18,8 +18,8 @@ export const useData = (url: string) => {
             );
           }
         })
-        .catch(function (error) {
-          return <div>{error}</div>;
+        .catch((error) => {
+          return console.log(error);
         });
       return () => {
         ignore = true;

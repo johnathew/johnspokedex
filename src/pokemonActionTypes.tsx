@@ -17,13 +17,15 @@ export interface IPokemon {
   name: string;
   height: number;
   weight: number;
+  id: number;
   species: {
     name: string;
     url: string;
   };
+
   base_experience: number;
   sprites: PokemonImg;
-  types?: PokemonTypes[];
+  types?: {type: {name: string}}[];
 }
 
 export interface PokemonImg {
