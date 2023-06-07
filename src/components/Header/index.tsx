@@ -9,7 +9,7 @@ interface IHeader {
 
 const Header = ({ toggleDarkMode, darkMode }: IHeader) => {
   return (
-    <header className="dark:text-white text-black mt-0 w-full border-b p-2 flex justify-between items-center drop-shadow-sm">
+    <header className="dark:text-white text-black mt-0 w-full mb-0 border-b p-2 flex justify-between items-center drop-shadow-sm">
       <h1>Pokedex Search</h1>
       <label className="flex items-center gap-2 text-sm font-thin">
         Dark Mode

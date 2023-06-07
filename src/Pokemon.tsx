@@ -1,13 +1,16 @@
 import React, { useReducer, useState } from "react";
-import { ACTION_TYPES, IPokemon, PokemonTypes, } from "./pokemonActionTypes";
+import { ACTION_TYPES, PokemonTypes } from "./pokemonActionTypes";
 import { INITIAL_STATE, pokemonReducer } from "./PokemonContext";
 import { PokemonContext } from "./PokemonContext";
 import PokemonDetails from "./PokemonDetails";
+import { Loading } from "./components/Loading";
 
 const Pokemon = () => {
   // dispatch allows us to send actions to the reducer
   const [state, dispatch] = useReducer(pokemonReducer, INITIAL_STATE);
   const [pokedexVal, setPokedexVal] = useState<number>(1);
+
+  const { loading } = state;
 
   const handlefetch = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -27,42 +30,36 @@ const Pokemon = () => {
 
   return (
     <PokemonContext.Provider value={state}>
-      <div className="flex flex-col  items-center text-black h-screen dark:text-white dark:bg-slate-800 bg-gray-50 w-full p-10">
-        <h2>Enter a pokedex value below</h2>
-        <form onSubmit={handlefetch}>
-          <input
-            type="number"
-            placeholder="Enter a pokedex value"
-            value={pokedexVal}
-            min="1"
-            max="1010"
-            onChange={(event) => setPokedexVal(+event.target.value)}
-            className="border w-16 text-black"
-          />
-          <button className="bg-black text-yellow-100 font-light rounded-md p-1">
-            Click me for Pokemon
-          </button>
-        </form>
-        <div className="w-full flex h-1/5 items-center flex-col">
-          <p className="font-semibold text-2xl">
-            Name:{" "}
-            {state?.pokemon?.name?.charAt(0).toUpperCase() +
-              state?.pokemon?.name?.slice(1)}
-          </p>
-          <div className="bg-gray-300 w-auto dark:border-white border-[15px] border-gray-800">
-            <img
-              src={state.pokemon?.sprites?.front_default}
-              className="w-44 h-auto drop-shadow-2xl"
-              placeholder="blur"
-            />
-          </div>
-          <h2 className="border-b font-bold text-lg">Type(s)</h2>
-          <ul className="flex gap-2 text-white">
-            {state.pokemon.types?.map((type: PokemonTypes, index: number) => {
-              return (
-                <p
-                  key={index}
-                  className={`${type.type?.name === "fire" && "bg-red-600"}
+      <section className="bg-[url('/pokedex.svg')] text-white h-screen bg-contain md:h-screen w-full relative bg-no-repeat">
+        <div className="top-0 left-0 w-full h-full flex flex-col">
+          <div className="w-1/4 h-1/2 text-xs md:items-center flex flex-col rounded-md absolute md:w-[29%] md:h-1/5 md:mt-[210px] md:ml-28">
+            <p className="font-semibold mr-4 md:w-4/5 text-md pt-3 pr-2 border-b-2">
+              Name:{" "}
+              <span className="text-yellow-400">
+                {state?.pokemon?.name?.charAt(0).toUpperCase() +
+                  state?.pokemon?.name?.slice(1)}
+              </span>
+            </p>
+            {loading && <Loading />}
+            {!loading && (
+              <div className="flex p-2 flex-col absolute mt-10 mr-20">
+                <img
+                  src={state.pokemon?.sprites?.front_default}
+                  className="drop-shadow-2xl h-auto w-36 ml-10 -skew-x-2"
+                  placeholder="blur"
+                />
+                <div className="flex absolute mt-28 w-aut0">
+                  <div className="text-xs">
+                    <h2 className="border-b font-bold ml-7">Type(s)</h2>
+                    <ul className="flex gap-2 text-white">
+                      {state.pokemon.types?.map(
+                        (type: PokemonTypes, index: number) => {
+                          return (
+                            <p
+                              key={index}
+                              className={`shadow p-2 ${
+                                type.type?.name === "fire" && "bg-red-600"
+                              }
               ${type.type?.name === "grass" && "bg-green-500"}
               ${type.type?.name === "poison" && "bg-purple-700"}
               ${type.type?.name === "water" && "bg-blue-700"}
@@ -82,17 +79,48 @@ const Pokemon = () => {
               ${
                 type.type?.name === "flying" && "bg-purple-400"
               } rounded-md p-2 mt-2`}
-                >
-                  {type?.type?.name}
-                </p>
-              );
-            })}
-          </ul>
+                            >
+                              {type?.type?.name}
+                            </p>
+                          );
+                        }
+                      )}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+          <div className="w-10 md:ml-[140px] sm:mt-[552px] flex flex-col md:h-12 md:w-28 absolute  border-black rounded-lg">
+            <p className="text-[8px] text-black font-bold tracking-wider">
+              Pokedex value
+            </p>
+            <div className="w-auto p-2 -mt-2 justify-center align-middle">
+              <form onSubmit={handlefetch}>
+                <input
+                  type="number"
+                  placeholder="Enter a pokedex value"
+                  value={pokedexVal}
+                  min="0"
+                  max="1010"
+                  onChange={(event) =>
+                    setPokedexVal(parseInt(event.target.value))
+                  }
+                  className="border-2 rounded-md w-20 p-1 mb-[9px] bg-red-600 text-white drop-shadow-sm bg-opacity-100 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                />
+                <button className="bg-yellow-100 hover:bg-yellow-300 active:inset-10 shadow text-black text-[7px] w-24 h-4 align-middle border-2 border-black -ml-2 font-light rounded-md">
+                  Search
+                </button>
+              </form>
+            </div>
+          </div>
           <PokemonDetails />
         </div>
-      </div>
+      </section>
     </PokemonContext.Provider>
   );
 };
 
 export default Pokemon;
+
+//       <div className="bg-[url('/pokedex.svg')] container md:w-screen md:h-screen bg-contain h-full md:bg-center w-full bg-no-repeat relative flex">

@@ -22,7 +22,6 @@ export interface IPokemon {
     name: string;
     url: string;
   };
-
   base_experience: number;
   sprites: PokemonImg;
   types?: {type: {name: string}}[];
