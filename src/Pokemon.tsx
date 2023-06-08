@@ -32,7 +32,7 @@ const Pokemon = () => {
     <PokemonContext.Provider value={state}>
       <section className="bg-[url('/pokedex.svg')] text-white h-screen bg-contain md:h-screen w-full relative bg-no-repeat">
         <div className="top-0 left-0 w-full h-full flex flex-col">
-          <div className="w-1/4 h-1/2 text-xs md:items-center flex flex-col rounded-md absolute md:w-[29%] md:h-1/5 md:mt-[210px] md:ml-28">
+          <div className="w-1/4 h-1/2 text-xs md:items-center flex flex-col rounded-md absolute md:w-[29%] md:h-1/5 md:mt-[230px] md:ml-[120px]" >
             <p className="font-semibold mr-4 md:w-4/5 text-md pt-3 pr-2 border-b-2">
               Name:{" "}
               <span className="text-yellow-400">
@@ -91,7 +91,7 @@ const Pokemon = () => {
               </div>
             )}
           </div>
-          <div className="w-10 md:ml-[140px] sm:mt-[552px] flex flex-col md:h-12 md:w-28 absolute  border-black rounded-lg">
+          <div className="w-10 md:ml-[150px] sm:mt-[582px] flex flex-col md:h-12 md:w-28 absolute  border-black rounded-lg">
             <p className="text-[8px] text-black font-bold tracking-wider">
               Pokedex value
             </p>
@@ -108,7 +108,7 @@ const Pokemon = () => {
                   }
                   className="border-2 rounded-md w-20 p-1 mb-[9px] bg-red-600 text-white drop-shadow-sm bg-opacity-100 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                 />
-                <button className="bg-yellow-100 hover:bg-yellow-300 active:inset-10 shadow text-black text-[7px] w-24 h-4 align-middle border-2 border-black -ml-2 font-light rounded-md">
+                <button className="bg-yellow-100 mt-1.5 ml-1 hover:bg-yellow-300 active:inset-10 shadow text-black text-[7px] w-24 h-4 align-middle border-2 border-black font-light rounded-md">
                   Search
                 </button>
               </form>

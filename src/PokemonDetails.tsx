@@ -11,7 +11,7 @@ const PokemonDetails = () => {
   const sample: any = useData(`${pokemonData?.pokemon.species?.url}`);
 
   return (
-    <div className="w-[270px] flex h-[87px] absolute z-100 p-2 bg-red-200 bg-opacity-5 rounded-md overflow-auto items-center ml-[409px] mt-[265px]">
+    <div className="w-[270px] flex h-[87px] absolute z-100 p-2  rounded-md overflow-auto items-center ml-[440px] mt-[282px]">
       <div className="flex flex-col space-y-2 border-r-2 w-1/5 pr-1">
         <div className="flex gap-x-1 justify-center items-center">
           <TfiRuler className="text-yellow-300 text-lg" />

@@ -16,4 +16,8 @@ Tailwind CSS
 Language:
 Typescript
 
+
+Mobile/ Responsive design is major work in progress - view the project on mobile at your own risk 👀
+
+
 Project made with Vite
