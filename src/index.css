@@ -2,7 +2,7 @@
 
 @tailwind base;
 
-
+/* SCROLL BAR -->*/
 /* Firefox */
 * {
   scrollbar-width: thin;
