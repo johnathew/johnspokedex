@@ -22,6 +22,8 @@ export interface IPokemon {
     name: string;
     url: string;
   };
+  abilities: {ability: {name: string}}[];
+  stats: {base_stat: number}[];
   base_experience: number;
   sprites: PokemonImg;
   types?: {type: {name: string}}[];
