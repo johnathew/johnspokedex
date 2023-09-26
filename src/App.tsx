@@ -1,5 +1,3 @@
-import "./App.css";
-
 import {
   RouterProvider,
   createBrowserRouter,
@@ -11,6 +9,12 @@ import Pokemon from "./pages/Pokemon/Pokemon";
 import PokemonDetails from "./pages/Pokemon/PokemonDetails";
 import Layout from "./components/Layout";
 import About from "./pages/About";
+import PokeLocation from "./pages/Pokemon/PokeLocation";
+import PokeSpeciesInfo from "./pages/Pokemon/PokeSpeciesInfo";
+import PokeForms from "./pages/Pokemon/PokeForms";
+import NotFound from "./pages/NotFound";
+import Error from "./components/Error";
+import Search from "./pages/Search";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -18,9 +22,17 @@ const router = createBrowserRouter(
       <Route path="/" element={<HomePage />} />
       <Route path="/about" element={<About />} />
       <Route path="/pokemon" element={<Pokemon />} />
+      <Route
+        path="/search"
+        element={<Search />}
+        errorElement={<Error />}
+      />
       <Route path="/pokemon/:id" element={<PokemonDetails />}>
-        <Route index element={<h1>Sample text goes here</h1>} />
+        <Route index element={<PokeSpeciesInfo />} />
+        <Route path="locations" element={<PokeLocation />} />
+        <Route path="forms" element={<PokeForms />} />
       </Route>
+      <Route path="*" element={<NotFound />} />
     </Route>
   )
 );

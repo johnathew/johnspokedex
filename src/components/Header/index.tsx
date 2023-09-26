@@ -1,7 +1,6 @@
-import { MdOutlineDarkMode } from "react-icons/md";
 import { BsSun } from "react-icons/bs";
 import { BsFillSunFill } from "react-icons/bs";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 interface IHeader {
   toggleDarkMode: () => void;
@@ -9,31 +8,46 @@ interface IHeader {
 }
 
 const Header = ({ toggleDarkMode, darkMode }: IHeader) => {
-  const activeLink = "text-red-500 font-bold underline";
+  const activeLink = "text-yellow-500 font-bold underline";
   return (
-    <header className="dark:text-white flex-shrink-0 text-black mt-0 w-full mb-0 border-b p-2 flex justify-between items-center drop-shadow-sm">
-      <NavLink
-        to="/"
-        className={({ isActive }) => (isActive ? activeLink : "text-white")}
-      >
-        <h1>Pokedex Search</h1>
-      </NavLink>
-      <nav className="flex justify-center text-base space-x-4">
+    <header className="dark:text-white flex-shrink-0 text-black bg-sky-600 dark:bg-black mt-0  text-[11px] w-full mb-0 border-b p-2 flex justify-around items-center drop-shadow-sm rounded-lg">
+      <nav className="flex justify-center space-x-4">
         <NavLink
-          to="/about"
-          className={({ isActive }) => (isActive ? activeLink : "text-white")}
+          to="/"
+          className={({ isActive }) =>
+            isActive ? activeLink : "hover:text-yellow-500"
+          }
         >
-          About
+          <h1>Pokedex Search</h1>
+        </NavLink>
+
+        <NavLink
+          to="/search"
+          className={({ isActive }) =>
+            isActive ? activeLink : "hover:text-yellow-500"
+          }
+        >
+          Search entire pokedex
         </NavLink>
         <NavLink
           to="/pokemon"
-          className={({ isActive }) => (isActive ? activeLink : "text-white")}
+          className={({ isActive }) =>
+            isActive ? activeLink : "hover:text-yellow-500"
+          }
         >
-          Pokemon
+          Pokemon details
+        </NavLink>
+
+        <NavLink
+          to="/about"
+          className={({ isActive }) =>
+            isActive ? activeLink : "hover:text-yellow-500"
+          }
+        >
+          About
         </NavLink>
       </nav>
-
-      <label className="flex items-center gap-2 text-sm font-thin">
+      <label className="flex items-center flex-col text-[10px] font-thin">
         Dark Mode
         {darkMode ? (
           <BsFillSunFill onClick={toggleDarkMode} className="text-lg" />

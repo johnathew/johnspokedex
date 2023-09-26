@@ -7,7 +7,7 @@ const Details = ({ data }: { data: IPokemon }) => {
           <img src={data.sprites.front_default} alt={data.name} />
           <p>No. {data.id}</p>
         </div>
-        <div className="flex flex-col text-left">
+        <div className="flex flex-col text-left border-b-4 border-black border-r-4 border-double p-2">
           <p className="text-base font-thin border-black">
             {data.name.charAt(0).toUpperCase() + data.name.slice(1)}
           </p>

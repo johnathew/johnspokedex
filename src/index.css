@@ -42,3 +42,12 @@ body, html {
 .dark {
   @apply bg-black text-zinc-50;
 }
+
+
+@layer base {
+    @font-face {
+        font-family: "press-start";
+        font-weight: 400;
+        src: url('./assets/PressStart2P.ttf') format("truetype");
+      }
+}
