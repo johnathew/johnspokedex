@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
+import { Link } from "react-router-dom";
 
 export default function SearchPokedex({ data }: any) {
   const [search, setSearch] = useState("");
@@ -27,7 +28,7 @@ export default function SearchPokedex({ data }: any) {
   };
 
   return (
-    <div className="grid w-full items-center gap-1.5 overflow-auto ">
+    <>
       <div className="sticky top-0 z-10 bg-sky-600 dark:bg-black flex flex-col items-center p-4 w-auto">
         <Label htmlFor="search" className="mb-2">
           Search
@@ -40,21 +41,29 @@ export default function SearchPokedex({ data }: any) {
           onChange={(e) => handleChange(e)}
         />
       </div>
-      <ul className="flex flex-col items-center justify-center relative top-0">
-        {pokemon?.length ? (
-          pokemon.map((pokemon: any, index: number) => (
-            <li
-              key={index}
-              className="flex text-center justify-between px-10 transform border-2 border-black dark:border-white shadow-sm w-1/2 mb-1 bg-slate-700 text-white text-base hover:text-yellow-300 transition duration-300 ease-in-out hover:scale-105 hover:underline hover:border-double"
-            >
-              <p className="text-[10px]"> {pokemon.name}</p>
-              <p className="text-[10px]">{getEntry(pokemon.url)}</p>
-            </li>
-          ))
-        ) : (
-          <p className="text-white">No pokemon found</p>
-        )}
-      </ul>
-    </div>
+      <div className="w-full items-center gap-1.5 overflow-auto pt-4 ">
+        <ul>
+          {pokemon?.length ? (
+            pokemon.map((pokemon: any, index: number) => (
+              <Link
+                to={`/pokemon/${pokemon.name}`}
+                key={pokemon.name}
+                className="w-full h-full flex justify-center items-center"
+              >
+                <li
+                  key={index}
+                  className="flex text-center justify-between px-10 transform border-2 rounded-lg border-black dark:border-white shadow-sm w-1/2 mb-1 bg-red-700 dark:bg-yellow-500 dark:text-black text-white text-base hover:text-yellow-300 transition duration-300 ease-in-out hover:scale-105 hover:underline hover:border-double"
+                >
+                  <p className="text-[10px]"> {pokemon.name}</p>
+                  <p className="text-[10px]">{getEntry(pokemon.url)}</p>
+                </li>
+              </Link>
+            ))
+          ) : (
+            <p className="text-white">No pokemon found</p>
+          )}
+        </ul>
+      </div>
+    </>
   );
 }

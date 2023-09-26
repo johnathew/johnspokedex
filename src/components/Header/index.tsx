@@ -10,8 +10,8 @@ interface IHeader {
 const Header = ({ toggleDarkMode, darkMode }: IHeader) => {
   const activeLink = "text-yellow-500 font-bold underline";
   return (
-    <header className="dark:text-white flex-shrink-0 text-black bg-sky-600 dark:bg-black mt-0  text-[11px] w-full mb-0 border-b p-2 flex justify-around items-center drop-shadow-sm rounded-lg">
-      <nav className="flex justify-center space-x-4">
+    <header className="dark:text-white flex-shrink-0 text-black bg-sky-600 dark:bg-black mt-0  text-[11px] w-full mb-0 border-b p-2 flex justify-between items-center drop-shadow-sm rounded-lg">
+      <nav className="flex justify-around space-x-10">
         <NavLink
           to="/"
           className={({ isActive }) =>
@@ -47,7 +47,7 @@ const Header = ({ toggleDarkMode, darkMode }: IHeader) => {
           About
         </NavLink>
       </nav>
-      <label className="flex items-center flex-col text-[10px] font-thin">
+      <label className="flex items-center text-[10px] font-thin">
         Dark Mode
         {darkMode ? (
           <BsFillSunFill onClick={toggleDarkMode} className="text-lg" />

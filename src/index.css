@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
 @tailwind base;
 
@@ -28,10 +28,18 @@
 @tailwind components;
 @tailwind utilities;
 
-
-body, html {
+body,
+html {
   width: 100%;
   height: 100%;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    0deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(0, 96, 75, 1) 0%,
+    rgba(9, 111, 89, 1) 41%,
+    rgba(144, 255, 234, 1) 100%
+  );
 }
 
 #root {
@@ -43,11 +51,10 @@ body, html {
   @apply bg-black text-zinc-50;
 }
 
-
 @layer base {
-    @font-face {
-        font-family: "press-start";
-        font-weight: 400;
-        src: url('./assets/PressStart2P.ttf') format("truetype");
-      }
+  @font-face {
+    font-family: "press-start";
+    font-weight: 100;
+    src: url("./assets/PressStart2P.ttf") format("truetype");
+  }
 }
