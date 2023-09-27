@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { Link } from "react-router-dom";
+import PokemonListItem from "../PokemonListItem";
 
 export default function SearchPokedex({ data }: any) {
   const [search, setSearch] = useState("");
@@ -17,13 +18,6 @@ export default function SearchPokedex({ data }: any) {
     }
     if (search.length < 2) {
       setPokemon(data.results);
-    }
-  };
-
-  const getEntry = (url: string) => {
-    let matches = url.match(/\d+/g);
-    if (matches) {
-      return matches[1];
     }
   };
 
@@ -45,19 +39,7 @@ export default function SearchPokedex({ data }: any) {
         <ul>
           {pokemon?.length ? (
             pokemon.map((pokemon: any, index: number) => (
-              <Link
-                to={`/pokemon/${pokemon.name}`}
-                key={pokemon.name}
-                className="w-full h-full flex justify-center items-center"
-              >
-                <li
-                  key={index}
-                  className="flex text-center justify-between px-10 transform border-2 rounded-lg border-black dark:border-white shadow-sm w-1/2 mb-1 bg-red-700 dark:bg-yellow-500 dark:text-black text-white text-base hover:text-yellow-300 transition duration-300 ease-in-out hover:scale-105 hover:underline hover:border-double"
-                >
-                  <p className="text-[10px]"> {pokemon.name}</p>
-                  <p className="text-[10px]">{getEntry(pokemon.url)}</p>
-                </li>
-              </Link>
+              <PokemonListItem pokemon={pokemon} index={index} />
             ))
           ) : (
             <p className="text-white">No pokemon found</p>

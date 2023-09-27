@@ -7,9 +7,8 @@ const Search = () => {
   const { data, isPending, isError, error } = useQuery({
     queryKey: ["allPokemon"],
     queryFn: fetchAllPokemon,
-    staleTime: 1000 * 60 * 60 * 24,
-    gcTime: 1000 * 60 * 60 * 24,
-    //gcTime: how long data should be kept in cache
+    staleTime: Infinity,
+    gcTime: 1000 * 60 * 60 * 24 * 7,
   });
 
   if (isPending) {

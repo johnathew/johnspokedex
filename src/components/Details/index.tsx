@@ -1,23 +1,40 @@
 import { IPokemon } from "../../types/pokemonActionTypes";
+
 const Details = ({ data }: { data: IPokemon }) => {
+  const concatZeros = (num: number) => {
+    if (num < 10) {
+      return `00${num}`;
+    } else if (num < 100) {
+      return `0${num}`;
+    } else {
+      return num;
+    }
+  };
+
   return (
-    <div className="bg-red-200 w-full h-full text-black flex justify-center items-center flex-col">
-      <div className="flex w-1/2 h-auto justify-center items-center bg-blue-200">
+    <div className="dark:text-white w-full h-full text-black flex justify-center items-center flex-col">
+      <div className="flex w-1/2 h-auto justify-center items-center bg-slate-200 rounded-lg shadow-lg border-[1px] border-double border-black bg-opacity-50 dark:bg-black dark:border-white ">
         <div className="flex flex-col w-auto text-center">
-          <img src={data.sprites.front_default} alt={data.name} />
-          <p>No. {data.id}</p>
+          <img
+            src={data.sprites.front_default}
+            alt={data.name}
+            className="md:w-36"
+          />
+          <p>
+            {" "}
+            <span className="dark:text-yellow-500 text-blue-700">No.</span>{" "}
+            {concatZeros(data.id)}
+          </p>
         </div>
         <div className="flex flex-col text-left border-b-4 border-black border-r-4 border-double p-2">
           <p className="text-base font-thin border-black">
             {data.name.charAt(0).toUpperCase() + data.name.slice(1)}
           </p>
           <div className="flex justify-between mb-1">
-            <span className="text-xs font-thin text-blue-700 dark:text-black">
+            <span className="text-xs font-thin text-blue-700 dark:text-yellow-500">
               HP
             </span>
-            <span className="text-xs font-medium text-blue-700 dark:text-black">
-              100%
-            </span>
+            <span className="text-xs font-medium">100%</span>
           </div>
           <div className="w-full rounded-full h-auto">
             <div
@@ -29,8 +46,19 @@ const Details = ({ data }: { data: IPokemon }) => {
             </p>
           </div>
           <ul>
-            <li>HT: {data.height}"</li>
-            <li>WT: {data.weight} lbs.</li>
+            <li>
+              {" "}
+              <span className="text-xs font-thin text-blue-700 dark:text-yellow-500">
+                HT:{" "}
+              </span>{" "}
+              {data.height}"{" "}
+            </li>
+            <li>
+              <span className="text-xs font-thin text-blue-700 dark:text-yellow-500">
+                WT:{" "}
+              </span>
+              {data.weight} lbs.
+            </li>
           </ul>
         </div>
       </div>

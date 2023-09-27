@@ -20,24 +20,16 @@ const Header = ({ toggleDarkMode, darkMode }: IHeader) => {
         >
           <h1>Pokedex Search</h1>
         </NavLink>
-
+        <span className="text-yellow-500 opacity-70">|</span>
         <NavLink
           to="/search"
           className={({ isActive }) =>
             isActive ? activeLink : "hover:text-yellow-500"
           }
         >
-          Search entire pokedex
+          Search for Pokemon
         </NavLink>
-        <NavLink
-          to="/pokemon"
-          className={({ isActive }) =>
-            isActive ? activeLink : "hover:text-yellow-500"
-          }
-        >
-          Pokemon details
-        </NavLink>
-
+        <span className="text-yellow-500 opacity-70">|</span>
         <NavLink
           to="/about"
           className={({ isActive }) =>

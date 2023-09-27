@@ -5,7 +5,6 @@ import {
   Route,
 } from "react-router-dom";
 import HomePage from "./pages/HomePage";
-import Pokemon from "./pages/Pokemon/Pokemon";
 import PokemonDetails from "./pages/Pokemon/PokemonDetails";
 import Layout from "./components/Layout";
 import About from "./pages/About";
@@ -21,13 +20,12 @@ const router = createBrowserRouter(
     <Route element={<Layout />}>
       <Route path="/" element={<HomePage />} />
       <Route path="/about" element={<About />} />
-      <Route path="/pokemon" element={<Pokemon />} />
       <Route
         path="/search"
         element={<Search />}
         errorElement={<Error />}
       />
-      <Route path="/pokemon/:id" element={<PokemonDetails />}>
+      <Route path="/search/:id" element={<PokemonDetails />}>
         <Route index element={<PokeSpeciesInfo />} />
         <Route path="locations" element={<PokeLocation />} />
         <Route path="forms" element={<PokeForms />} />
