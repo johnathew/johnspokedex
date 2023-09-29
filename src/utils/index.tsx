@@ -46,3 +46,17 @@ export async function fetchAllPokemon({ signal }: { signal: AbortSignal }) {
   const data = await res.json();
   return data;
 }
+
+export async function getInfinitePokemon({
+  pageParam = 0,
+}: {
+  pageParam: number;
+}) {
+  const res = await fetch(
+    `https://pokeapi.co/api/v2/pokemon?limit=20&offset=${pageParam}`
+  );
+
+  const {results} = await res.json();
+
+  return results;
+}

@@ -14,17 +14,15 @@ import PokeForms from "./pages/Pokemon/PokeForms";
 import NotFound from "./pages/NotFound";
 import Error from "./components/Error";
 import Search from "./pages/Search";
+import Pokemon from "./pages/Pokemon";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<Layout />}>
       <Route path="/" element={<HomePage />} />
       <Route path="/about" element={<About />} />
-      <Route
-        path="/search"
-        element={<Search />}
-        errorElement={<Error />}
-      />
+      <Route path="/search" element={<Search />}  />
+      <Route path="/pokemon" element={<Pokemon />} errorElement={<Error />} />
       <Route path="/search/:id" element={<PokemonDetails />}>
         <Route index element={<PokeSpeciesInfo />} />
         <Route path="locations" element={<PokeLocation />} />

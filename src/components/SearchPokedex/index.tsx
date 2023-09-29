@@ -23,23 +23,26 @@ export default function SearchPokedex({ data }: any) {
 
   return (
     <>
-      <div className="sticky top-0 z-10 bg-sky-600 dark:bg-black flex flex-col items-center p-4 w-auto">
-        <Label htmlFor="search" className="mb-2">
-          Search
-        </Label>
-        <Input
-          type="search"
-          id="search"
-          placeholder="Search..."
-          value={search}
-          onChange={(e) => handleChange(e)}
-        />
+      <div className="sticky top-0 z-10 dark:bg-black flex items-center p-4 justify-around">
+        <div className="flex flex-col md:w-3/4 items-center">
+          <Label htmlFor="search" className="mb-2 text-xl">
+            Name
+          </Label>
+          <Input
+            type="search"
+            id="search"
+            value={search}
+            onChange={(e) => handleChange(e)}
+            aria-details="search for pokemon"
+          />
+        </div>
+        <h1 className="bg-sky-600 p-4 rounded-lg shadow-lg border-[1px]">Search for a pokemon by name {':)'}</h1>
       </div>
       <div className="w-full items-center gap-1.5 overflow-auto pt-4 ">
         <ul>
           {pokemon?.length ? (
             pokemon.map((pokemon: any, index: number) => (
-              <PokemonListItem pokemon={pokemon} index={index} />
+              <PokemonListItem pokemon={pokemon} index={index} key={pokemon.name} />
             ))
           ) : (
             <p className="text-white">No pokemon found</p>

@@ -31,6 +31,14 @@ const Header = ({ toggleDarkMode, darkMode }: IHeader) => {
         </NavLink>
         <span className="text-yellow-500 opacity-70">|</span>
         <NavLink
+          to="/pokemon"
+          className={({ isActive }) =>
+            isActive ? activeLink : "hover:text-yellow-500"
+          }
+        >
+          Pokemon
+        </NavLink>
+        <NavLink
           to="/about"
           className={({ isActive }) =>
             isActive ? activeLink : "hover:text-yellow-500"
