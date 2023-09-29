@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
-import { Link } from "react-router-dom";
 import PokemonListItem from "../PokemonListItem";
 
 export default function SearchPokedex({ data }: any) {
@@ -42,7 +41,7 @@ export default function SearchPokedex({ data }: any) {
         <ul>
           {pokemon?.length ? (
             pokemon.map((pokemon: any, index: number) => (
-              <PokemonListItem pokemon={pokemon} index={index} key={pokemon.name} />
+              <PokemonListItem name={pokemon.name} index={index} key={pokemon.name} url={pokemon?.url}/>
             ))
           ) : (
             <p className="text-white">No pokemon found</p>
