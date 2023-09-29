@@ -11,6 +11,8 @@ const PokemonListItem = ({
   index: number;
   altRef: any;
 }) => {
+
+  // adds zeros to simulate the pokedex entry
   const getEntry = (url: string) => {
     let matches = url.match(/\d+/g);
     if (matches) {

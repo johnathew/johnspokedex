@@ -38,6 +38,7 @@ const Header = ({ toggleDarkMode, darkMode }: IHeader) => {
         >
           Pokemon
         </NavLink>
+        <span className="text-yellow-500 opacity-70">|</span>
         <NavLink
           to="/about"
           className={({ isActive }) =>
@@ -46,8 +47,9 @@ const Header = ({ toggleDarkMode, darkMode }: IHeader) => {
         >
           About
         </NavLink>
+        <span className="text-yellow-500 opacity-70">|</span>
       </nav>
-      <label className="flex items-center text-[10px] font-thin">
+      <label className="flex items-center text-[9px] font-thin">
         Dark Mode
         {darkMode ? (
           <BsFillSunFill onClick={toggleDarkMode} className="text-lg" />

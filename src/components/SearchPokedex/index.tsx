@@ -35,13 +35,15 @@ export default function SearchPokedex({ data }: any) {
             aria-details="search for pokemon"
           />
         </div>
-        <h1 className="bg-sky-600 p-4 rounded-lg shadow-lg border-[1px]">Search for a pokemon by name {':)'}</h1>
+        <h1 className="bg-sky-600 p-4 rounded-lg shadow-lg border-[1px]">
+          Search for a pokemon by name {":)"}
+        </h1>
       </div>
       <div className="w-full items-center gap-1.5 overflow-auto pt-4 ">
         <ul>
           {pokemon?.length ? (
             pokemon.map((pokemon: any, index: number) => (
-              <PokemonListItem name={pokemon.name} index={index} key={pokemon.name} url={pokemon?.url}/>
+              <PokemonListItem {...pokemon} />
             ))
           ) : (
             <p className="text-white">No pokemon found</p>

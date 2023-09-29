@@ -1,22 +1,30 @@
 import { Loading } from "@/components/Loading";
-import PokemonListItem from "@/components/PokemonListItem";
-import { getInfinitePokemon } from "@/utils";
+
+import { getInfinitePokemon, setTypeColor } from "@/utils";
 import { useIntersection } from "@mantine/hooks";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useEffect, useRef } from "react";
+import PokemonItem from "@/components/PokemonItem";
 
 const Pokemon = () => {
+  const styles = {
+    borderRadius: "4px",
+    padding: "4px",
+    dropShadow: "2px 2px 2px black",
+  };
+  console.log(setTypeColor("normal"), "setTypeColor('normal')");
+
   const { status, data, isFetchingNextPage, fetchNextPage, error } =
     useInfiniteQuery({
       queryKey: ["paginatedPokemon"],
       queryFn: getInfinitePokemon,
       initialPageParam: 0,
       getNextPageParam: (lastPage, _, pageParams) => {
-        if (lastPage.length < 20) {
-          return undefined;
-        }
+        if (lastPage.length < 20) return undefined;
         return pageParams + 20;
       },
+      gcTime: 1000 * 60 * 60 * 24,
+      staleTime: Infinity,
     });
 
   const lastPostRef = useRef<HTMLElement>(null);
@@ -38,41 +46,59 @@ const Pokemon = () => {
   }
 
   const pokemonItems = data?.pages.flatMap((poke) => poke);
-
+  console.log(pokemonItems, "pokemonItems");
   return (
-    <div>
-      Pokemon infinite loading page
-      <ul className="list-disc h-screen">
+    <>
+      <h1>Pokemon (infinite loading)</h1>
+      <div className=" w-auto grid h-auto gap-2 grid-cols-3">
         {pokemonItems?.map((pokemon, index) => {
           if (index === pokemonItems.length - 1)
             return (
-              <PokemonListItem
-                name={pokemon.name}
+              <PokemonItem
+                name={
+                  pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)
+                }
                 key={pokemon.name}
-                url={pokemon.url}
-                index={index}
                 altRef={ref}
+                pokeSprite={pokemon.sprites.front_default}
+                type={pokemon.types.map((type: any) => (
+                  <li
+                    style={styles}
+                    className={`${setTypeColor(type.type.name)}`}
+                  >
+                    {type.type.name}
+                  </li>
+                ))}
               />
             );
           return (
-            <PokemonListItem
-              name={pokemon.name}
+            <PokemonItem
+              name={
+                pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)
+              }
               key={pokemon.name}
-              url={pokemon.url}
-              index={index}
               altRef={null}
+              pokeSprite={pokemon.sprites.front_default}
+              type={pokemon.types.map((type: any) => (
+                <li
+                  style={styles}
+                  className={`${setTypeColor(type.type.name)}`}
+                >
+                  {type.type.name}
+                </li>
+              ))}
             />
           );
         })}
-      </ul>
-      <button onClick={() => fetchNextPage()} disabled={isFetchingNextPage}>
-        {isFetchingNextPage
-          ? "Loading more..."
-          : (data?.pages.length ?? 0) < 100
-          ? "Load More"
-          : "Nothing more to load"}
-      </button>
-    </div>
+        <button onClick={() => fetchNextPage()} disabled={isFetchingNextPage}>
+          {isFetchingNextPage
+            ? "Loading more..."
+            : (data?.pages.length ?? 0) < 100
+            ? "Load More"
+            : "Nothing more to load"}
+        </button>
+      </div>
+    </>
   );
 };
 
