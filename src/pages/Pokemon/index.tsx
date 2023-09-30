@@ -48,7 +48,6 @@ const Pokemon = () => {
   console.log(pokemonItems, "pokemonItems");
   return (
     <>
-      <h1>Pokemon (infinite loading)</h1>
       <div className=" w-auto grid h-auto gap-2 grid-cols-3">
         {pokemonItems?.map((pokemon, index) => {
           if (index === pokemonItems.length - 1)
