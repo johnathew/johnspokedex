@@ -7,12 +7,11 @@ import { useEffect, useRef } from "react";
 import PokemonItem from "@/components/PokemonItem";
 
 const Pokemon = () => {
-  const styles = {
+  const typeStyles = {
     borderRadius: "4px",
     padding: "4px",
     dropShadow: "2px 2px 2px black",
   };
-  console.log(setTypeColor("normal"), "setTypeColor('normal')");
 
   const { status, data, isFetchingNextPage, fetchNextPage, error } =
     useInfiniteQuery({
@@ -63,7 +62,7 @@ const Pokemon = () => {
                 pokeSprite={pokemon.sprites.front_default}
                 type={pokemon.types.map((type: any) => (
                   <li
-                    style={styles}
+                    style={typeStyles}
                     className={`${setTypeColor(type.type.name)}`}
                   >
                     {type.type.name}
@@ -81,7 +80,7 @@ const Pokemon = () => {
               pokeSprite={pokemon.sprites.front_default}
               type={pokemon.types.map((type: any) => (
                 <li
-                  style={styles}
+                  style={typeStyles}
                   className={`${setTypeColor(type.type.name)}`}
                 >
                   {type.type.name}
