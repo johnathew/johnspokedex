@@ -48,7 +48,7 @@ const Pokemon = () => {
   console.log(pokemonItems, "pokemonItems");
   return (
     <>
-      <div className=" w-auto grid h-auto gap-2 grid-cols-3">
+      <div className="w-auto grid h-auto gap-2 md:grid-cols-3 grid-cols-1 bg-sky-700 dark:bg-slate-800">
         {pokemonItems?.map((pokemon, index) => {
           if (index === pokemonItems.length - 1)
             return (
