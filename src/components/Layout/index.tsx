@@ -13,7 +13,7 @@ const Layout = () => {
     <div
       className={`${
         darkMode ? "dark" : ""
-      } md:h-full overflow-auto md:w-screen w-full border-[1px] flex flex-col font-press-start md:text-xs text-center font-PressStart2P`}
+      } md:h-full overflow-auto md:w-screen w-full flex flex-col font-press-start md:text-xs text-center font-PressStart2P`}
     >
       <Header toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
       <Outlet />

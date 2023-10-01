@@ -11,7 +11,7 @@ interface IHeader {
 const Header = ({ toggleDarkMode, darkMode }: IHeader) => {
   const activeLink = "text-yellow-500 font-bold underline";
   return (
-    <header className="navbar bg-sky-800 text-slate-200 dark:bg-base-100 border-b-[1px] border-b-slate-900">
+    <header className="navbar bg-sky-800 text-slate-200 dark:bg-base-100 z-10 top-0 left-0 rounded-b-lg fixed shadow drop-shadow-xl">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">

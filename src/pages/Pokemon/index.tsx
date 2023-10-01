@@ -4,7 +4,7 @@ import { getInfinitePokemon, setTypeColor, concatZeros } from "@/utils";
 import { useIntersection } from "@mantine/hooks";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useEffect, useRef } from "react";
-import PokemonItem from "@/components/PokemonItem";
+import PokemonCard from "@/components/PokemonCard";
 
 const Pokemon = () => {
   const typeStyles = {
@@ -51,11 +51,11 @@ const Pokemon = () => {
 
   return (
     <>
-      <div className="w-auto grid h-auto md:grid-cols-3 grid-cols-1 bg-sky-700 dark:bg-slate-800">
+      <div className="w-auto grid h-auto md:grid-cols-3 mt-14 md:mt-16 gap-8 grid-cols-1 bg-sky-700 dark:bg-slate-800">
         {pokemonItems?.map((pokemon, index) => {
           if (index === pokemonItems.length - 1)
             return (
-              <PokemonItem
+              <PokemonCard
                 name={
                   pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)
                 }
@@ -66,6 +66,7 @@ const Pokemon = () => {
                   <li
                     style={typeStyles}
                     className={`${setTypeColor(type.type.name)}`}
+                    key={type.type.name}
                   >
                     {type.type.name}
                   </li>
@@ -75,7 +76,7 @@ const Pokemon = () => {
               />
             );
           return (
-            <PokemonItem
+            <PokemonCard
               name={
                 pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)
               }
