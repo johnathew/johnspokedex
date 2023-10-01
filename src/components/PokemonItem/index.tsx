@@ -1,22 +1,26 @@
 import { PokemonTypes } from "@/types/pokemonActionTypes";
 
-const PokemonItem = ({ name, pokeSprite, type, altRef }: any) => {
+const PokemonItem = ({ name, pokeSprite, type, altRef, pokedexId }: any) => {
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <div
         ref={altRef}
-        className="border-[1px] m-5 border-double bg-opacity-75 rounded-md p-4 bg-slate-900 delay-75 md:w-auto md:h-auto flex flex-col items-center transition ease-in-out hover:-translate-y-0.5 hover:scale-110 duration-75"
+        className="border-[1px] w-1/2 border-cyan-400 m-5 bg-opacity-75 rounded-md p-4 bg-slate-900  delay-75 md:w-2/3 md:h-auto flex flex-col items-center transition ease-in-out hover:-translate-y-0.5 hover:scale-110 duration-75"
       >
         <img
           src={pokeSprite}
           className="drop-shadow-2xl md:w-40 md:h-40 w-32 h-auto"
           placeholder="blur"
+          alt={name}
         />
       </div>
-      <div className="flex flex-col ml-6 text-left">
-        <p className="mb-2">{name}</p>
-        <div className="text-xs w-auto">
-          <ul className="justify-start items-center text-white flex gap-2">
+      <div className="flex flex-col items-center">
+        <p className="mb-2 text-gray-300">
+          {name} <span className="opacity-75 text-[10px]">{pokedexId}</span>
+        </p>
+
+        <div className="text-xs md:w-full flex justify-center">
+          <ul className=" text-white text-[8px] flex gap-2">
             {type}
           </ul>
         </div>

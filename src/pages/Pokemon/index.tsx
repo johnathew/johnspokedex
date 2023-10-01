@@ -1,6 +1,6 @@
 import { Loading } from "@/components/Loading";
 
-import { getInfinitePokemon, setTypeColor } from "@/utils";
+import { getInfinitePokemon, setTypeColor, concatZeros } from "@/utils";
 import { useIntersection } from "@mantine/hooks";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useEffect, useRef } from "react";
@@ -9,8 +9,11 @@ import PokemonItem from "@/components/PokemonItem";
 const Pokemon = () => {
   const typeStyles = {
     borderRadius: "4px",
-    padding: "4px",
+    padding: "5px",
     dropShadow: "2px 2px 2px black",
+    width: "100px",
+    height: 'auto',
+    border: "0.5px solid gray",
   };
 
   const { status, data, isFetchingNextPage, fetchNextPage, error } =
@@ -45,10 +48,10 @@ const Pokemon = () => {
   }
 
   const pokemonItems = data?.pages.flatMap((poke) => poke);
-  console.log(pokemonItems, "pokemonItems");
+
   return (
     <>
-      <div className="w-auto grid h-auto gap-2 md:grid-cols-3 grid-cols-1 bg-sky-700 dark:bg-slate-800">
+      <div className="w-auto grid h-auto md:grid-cols-3 grid-cols-1 bg-sky-700 dark:bg-slate-800">
         {pokemonItems?.map((pokemon, index) => {
           if (index === pokemonItems.length - 1)
             return (
@@ -67,6 +70,8 @@ const Pokemon = () => {
                     {type.type.name}
                   </li>
                 ))}
+                pokedexId={pokemon.id}
+                alt={pokemon.name}
               />
             );
           return (
@@ -85,6 +90,7 @@ const Pokemon = () => {
                   {type.type.name}
                 </li>
               ))}
+              pokedexId={concatZeros(pokemon.id)}
             />
           );
         })}

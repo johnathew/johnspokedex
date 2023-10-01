@@ -94,7 +94,8 @@ const Header = ({ toggleDarkMode, darkMode }: IHeader) => {
                 isActive ? activeLink : "hover:text-yellow-500"
               }
             >
-              Pokemon (<TfiInfinite />scrolling)
+              Pokemon (<TfiInfinite />
+              scrolling)
             </NavLink>
           </li>
           <li>
@@ -110,12 +111,12 @@ const Header = ({ toggleDarkMode, darkMode }: IHeader) => {
         </ul>
       </div>
       <div className="navbar-end">
-        <label className="flex items-center text-[8px] md:text-xs font-thin">
+        <label className="flex items-center text-[8px] md:text-xs font-thin md:mr-2">
           Dark Mode
           {darkMode ? (
-            <BsFillSunFill onClick={toggleDarkMode} className="text-lg ml-2" />
+            <BsSun onClick={toggleDarkMode} className="text-lg ml-2" />
           ) : (
-            <BsSun onClick={toggleDarkMode} className="text-xl ml-2" />
+            <BsFillSunFill onClick={toggleDarkMode} className="text-xl ml-2" />
           )}
         </label>
       </div>

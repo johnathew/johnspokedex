@@ -1,16 +1,7 @@
+import { concatZeros } from "@/utils";
 import { IPokemon } from "../../types/pokemonActionTypes";
 
 const Details = ({ data }: { data: IPokemon }) => {
-  const concatZeros = (num: number) => {
-    if (num < 10) {
-      return `00${num}`;
-    } else if (num < 100) {
-      return `0${num}`;
-    } else {
-      return num;
-    }
-  };
-
   return (
     <div className="dark:text-white w-full h-full text-black flex justify-center items-center flex-col">
       <div className="flex w-1/2 h-auto justify-center items-center bg-slate-200 rounded-lg shadow-lg border-[1px] border-double border-black bg-opacity-50 dark:bg-black dark:border-white ">
