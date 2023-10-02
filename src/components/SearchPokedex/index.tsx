@@ -45,7 +45,13 @@ export default function SearchPokedex({ data }: any) {
       <ul className="w-full h-auto overflow-auto pt-2 flex flex-col justify-start items-center px-4 ">
         {pokemon?.length ? (
           pokemon.map((pokemon: any, index: number) => (
-            <PokemonListItem {...pokemon} />
+            <PokemonListItem
+              name={pokemon.name}
+              index={index}
+              url={pokemon.url}
+              key={pokemon.name}
+              altRef={null}
+            />
           ))
         ) : (
           <p className="text-white">No pokemon found</p>
