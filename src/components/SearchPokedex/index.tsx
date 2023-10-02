@@ -42,7 +42,7 @@ export default function SearchPokedex({ data }: any) {
         </div>
       </div>
 
-      <ul className="w-full overflow-auto pt-2 flex flex-col justify-center items-center px-4 ">
+      <ul className="w-full h-auto overflow-auto pt-2 flex flex-col justify-start items-center px-4 ">
         {pokemon?.length ? (
           pokemon.map((pokemon: any, index: number) => (
             <PokemonListItem {...pokemon} />
