@@ -12,7 +12,7 @@ const Pokemon = () => {
     padding: "5px",
     dropShadow: "2px 2px 2px black",
     width: "100px",
-    height: 'auto',
+    height: "auto",
     border: "0.5px solid gray",
   };
 
@@ -51,7 +51,7 @@ const Pokemon = () => {
 
   return (
     <>
-      <div className="w-auto grid h-auto md:grid-cols-3 mt-14 md:mt-16 gap-8 grid-cols-1 bg-sky-700 dark:bg-slate-800">
+      <div className="w-auto grid h-auto md:grid-cols-3 mt-14 md:p-8 md:mt-16 gap-8 grid-cols-1 bg-sky-700 dark:bg-slate-800">
         {pokemonItems?.map((pokemon, index) => {
           if (index === pokemonItems.length - 1)
             return (
@@ -71,7 +71,7 @@ const Pokemon = () => {
                     {type.type.name}
                   </li>
                 ))}
-                pokedexId={pokemon.id}
+                pokedexId={concatZeros(pokemon.id)}
                 alt={pokemon.name}
               />
             );
@@ -87,6 +87,7 @@ const Pokemon = () => {
                 <li
                   style={typeStyles}
                   className={`${setTypeColor(type.type.name)}`}
+                  key={type.type.name}
                 >
                   {type.type.name}
                 </li>

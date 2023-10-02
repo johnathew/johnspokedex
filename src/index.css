@@ -1,22 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
-
 @tailwind components;
 @tailwind utilities;
 @tailwind base;
 
-/* SCROLL BAR -->*/
-/* Firefox */
 
 * {
   scrollbar-width: thin;
   scrollbar-color: #4a5568 #2d3748;
 }
-
-#root {
-  height: 100vh;
-}
-
-
 
 .dark {
   @apply bg-black text-zinc-50;
