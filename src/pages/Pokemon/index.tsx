@@ -10,10 +10,10 @@ const Pokemon = () => {
   const typeStyles = {
     borderRadius: "4px",
     padding: "5px",
-    dropShadow: "2px 2px 2px black",
+    boxShadow: "0.1px 0.1px 0.1px 1px gray",
     width: "100px",
     height: "auto",
-    border: "0.5px solid gray",
+    border: "2px solid black",
   };
 
   const { status, data, isFetchingNextPage, fetchNextPage, error } =
@@ -96,13 +96,6 @@ const Pokemon = () => {
             />
           );
         })}
-        <button onClick={() => fetchNextPage()} disabled={isFetchingNextPage}>
-          {isFetchingNextPage
-            ? "Loading more..."
-            : (data?.pages.length ?? 0) < 100
-            ? "Load More"
-            : "Nothing more to load"}
-        </button>
       </div>
     </>
   );

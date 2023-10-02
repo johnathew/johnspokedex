@@ -19,7 +19,7 @@ function HomePage() {
       className="flex flex-col mb-auto items-center relative justify-center w-full h-screen  bg-sky-700 dark:bg-slate-800"
       onKeyDown={(e) => handleKeyDown(e as React.KeyboardEvent<HTMLElement>)}
     >
-      <img src={pokemonLogo} alt="pokemon logo" className="w-3/4 h-auto animate-pulse" />
+      <img src={pokemonLogo} alt="pokemon logo" className="md:w-1/2 w-3/4 h-auto animate-pulse" />
       <section className="flex items-center justify-between flex-col p-4 h-auto w-auto">
         <h1 className="md:text-xl text-slate-200 shadow-sm text-xs decoration-slate-600 ">
           Welcome to John's Pokedex

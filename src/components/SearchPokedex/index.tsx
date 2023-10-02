@@ -22,10 +22,13 @@ export default function SearchPokedex({ data }: any) {
 
   return (
     <>
-      <div className="sticky top-0 z-10 dark:bg-black flex items-center p-4 justify-around">
-        <div className="flex flex-col md:w-3/4 items-center">
-          <Label htmlFor="search" className="mb-2 text-xl">
-            Name
+      <div className="mt-16 dark:bg-black md:w-full p-4 ">
+        <div className="flex md:w-full justify-center items-center text-left">
+          <Label
+            htmlFor="search"
+            className="text-white md:text-[9px] text-[7px] pr-4"
+          >
+            Search for Pokemon
           </Label>
           <Input
             type="search"
@@ -33,23 +36,21 @@ export default function SearchPokedex({ data }: any) {
             value={search}
             onChange={(e) => handleChange(e)}
             aria-details="search for pokemon"
+            className="bg-sky-200 placeholder:text-black-400 placeholder:text-[8px] dark:bg-slate-800 dark:text-white text-black-400 rounded-md md:p-2 w-3/4 md:w-1/3"
+            placeholder="Enter Pokemon Name..."
           />
         </div>
-        <h1 className="bg-sky-600 p-4 rounded-lg shadow-lg border-[1px]">
-          Search for a pokemon by name {":)"}
-        </h1>
       </div>
-      <div className="w-full items-center gap-1.5 overflow-auto pt-4 ">
-        <ul>
-          {pokemon?.length ? (
-            pokemon.map((pokemon: any, index: number) => (
-              <PokemonListItem {...pokemon} />
-            ))
-          ) : (
-            <p className="text-white">No pokemon found</p>
-          )}
-        </ul>
-      </div>
+
+      <ul className="w-full overflow-auto pt-2 flex flex-col justify-center items-center px-4 ">
+        {pokemon?.length ? (
+          pokemon.map((pokemon: any, index: number) => (
+            <PokemonListItem {...pokemon} />
+          ))
+        ) : (
+          <p className="text-white">No pokemon found</p>
+        )}
+      </ul>
     </>
   );
 }
