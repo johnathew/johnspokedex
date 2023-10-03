@@ -1,16 +1,16 @@
-import { get } from "http";
+import { PokeColumn } from "@/pages/SearchPokedex/columns";
 
 export async function fetchPokemon({
   signal,
-  pokemonTerm,
+  pokemonName,
 }: {
   signal: AbortSignal;
-  pokemonTerm?: string;
+  pokemonName?: string;
 }) {
   let url = `https://pokeapi.co/api/v2/pokemon/`;
 
-  if (pokemonTerm) {
-    url = `https://pokeapi.co/api/v2/pokemon/${pokemonTerm}`;
+  if (pokemonName) {
+    url = `https://pokeapi.co/api/v2/pokemon/${pokemonName}`;
   }
 
   const res = await fetch(url, { signal: signal });
@@ -134,13 +134,36 @@ export function setTypeColor(type: string) {
   return typeColor;
 }
 
-
 export const concatZeros = (num: number) => {
+
   if (num < 10) {
     return `00${num}`;
   } else if (num < 100) {
     return `0${num}`;
   } else {
-    return num;
+    return num.toString();
   }
+};
+
+export const getEntry = (url: string) => {
+  let matches = url.match(/\d+/g);
+
+  if (matches) {
+    return matches[1];
+  }
+};
+
+const fetchAllPokemonInfo = async () => {
+  const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=130000`);
+
+  const { results } = await res.json();
+
+  const response = await Promise.all(
+    results.map(async (pokemon: any) => {
+      const res = await fetch(pokemon.url);
+      return res.json();
+    })
+  );
+
+  return response;
 };

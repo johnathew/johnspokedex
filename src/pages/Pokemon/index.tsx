@@ -16,7 +16,7 @@ const Pokemon = () => {
     border: "2px solid black",
   };
 
-  const { status, data, isFetchingNextPage, fetchNextPage, error } =
+  const { status, data, fetchNextPage, error } =
     useInfiniteQuery({
       queryKey: ["paginatedPokemon"],
       queryFn: getInfinitePokemon,
@@ -28,7 +28,7 @@ const Pokemon = () => {
       gcTime: 1000 * 60 * 60 * 24,
       staleTime: Infinity,
     });
-
+  
   const lastPostRef = useRef<HTMLElement>(null);
   const { ref, entry } = useIntersection({
     root: lastPostRef.current,
