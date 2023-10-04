@@ -1,10 +1,11 @@
 import { Loading } from "@/components/Loading";
-
+import { Link } from "react-router-dom";
 import { getInfinitePokemon, setTypeColor, concatZeros } from "@/utils";
 import { useIntersection } from "@mantine/hooks";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useEffect, useRef } from "react";
 import PokemonCard from "@/components/PokemonCard";
+import React from "react";
 
 const Pokemon = () => {
   const typeStyles = {
@@ -14,21 +15,23 @@ const Pokemon = () => {
     width: "100px",
     height: "auto",
     border: "2px solid black",
+    fontSize: "0.8rem",
+    display: "flex",
+    justifyContent: "center",
   };
 
-  const { status, data, fetchNextPage, error } =
-    useInfiniteQuery({
-      queryKey: ["paginatedPokemon"],
-      queryFn: getInfinitePokemon,
-      initialPageParam: 0,
-      getNextPageParam: (lastPage, _, pageParams) => {
-        if (lastPage.length < 20) return undefined;
-        return pageParams + 20;
-      },
-      gcTime: 1000 * 60 * 60 * 24,
-      staleTime: Infinity,
-    });
-  
+  const { status, data, fetchNextPage, error } = useInfiniteQuery({
+    queryKey: ["paginatedPokemon"],
+    queryFn: getInfinitePokemon,
+    initialPageParam: 0,
+    getNextPageParam: (lastPage, _, pageParams) => {
+      if (lastPage.length < 20) return undefined;
+      return pageParams + 20;
+    },
+    gcTime: 1000 * 60 * 60 * 24,
+    staleTime: Infinity,
+  });
+
   const lastPostRef = useRef<HTMLElement>(null);
   const { ref, entry } = useIntersection({
     root: lastPostRef.current,
@@ -51,49 +54,58 @@ const Pokemon = () => {
 
   return (
     <>
-      <div className="w-auto grid h-auto md:grid-cols-3 mt-14 md:p-8 md:mt-16 gap-8 grid-cols-1 bg-sky-700 dark:bg-slate-800">
+      <div className="w-auto grid h-auto md:grid-cols-3 md:p-8 gap-8 grid-cols-1 bg-sky-700 dark:bg-slate-800">
         {pokemonItems?.map((pokemon, index) => {
           if (index === pokemonItems.length - 1)
             return (
-              <PokemonCard
-                name={
-                  pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)
-                }
-                key={pokemon.name}
-                altRef={ref}
-                pokeSprite={pokemon.sprites.front_default}
-                type={pokemon.types.map((type: any) => (
-                  <li
-                    style={typeStyles}
-                    className={`${setTypeColor(type.type.name)}`}
-                    key={type.type.name}
-                  >
-                    {type.type.name}
-                  </li>
-                ))}
-                pokedexId={concatZeros(pokemon.id)}
-                alt={pokemon.name}
-              />
+              <React.Fragment key={pokemon.name}>
+                <Link to={`/search/${pokemon.id}`}>
+                  <PokemonCard
+                    name={
+                      pokemon.name.charAt(0).toUpperCase() +
+                      pokemon.name.slice(1)
+                    }
+                    key={pokemon.name}
+                    altRef={ref}
+                    pokeSprite={pokemon.sprites.front_default}
+                    type={pokemon.types.map((type: any) => (
+                      <li
+                        style={typeStyles}
+                        className={`${setTypeColor(type.type.name)}`}
+                        key={type.type.name}
+                      >
+                        {type.type.name}
+                      </li>
+                    ))}
+                    pokedexId={concatZeros(pokemon.id)}
+                    alt={pokemon.name}
+                  />
+                </Link>
+              </React.Fragment>
             );
           return (
-            <PokemonCard
-              name={
-                pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)
-              }
-              key={pokemon.name}
-              altRef={null}
-              pokeSprite={pokemon.sprites.front_default}
-              type={pokemon.types.map((type: any) => (
-                <li
-                  style={typeStyles}
-                  className={`${setTypeColor(type.type.name)}`}
-                  key={type.type.name}
-                >
-                  {type.type.name}
-                </li>
-              ))}
-              pokedexId={concatZeros(pokemon.id)}
-            />
+            <React.Fragment key={pokemon.name}>
+              <Link to={`/search/${pokemon.id}`}>
+                <PokemonCard
+                  name={
+                    pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)
+                  }
+                  key={pokemon.name}
+                  altRef={null}
+                  pokeSprite={pokemon.sprites.front_default}
+                  type={pokemon.types.map((type: any) => (
+                    <li
+                      style={typeStyles}
+                      className={`${setTypeColor(type.type.name)}`}
+                      key={type.type.name}
+                    >
+                      {type.type.name}
+                    </li>
+                  ))}
+                  pokedexId={concatZeros(pokemon.id)}
+                />
+              </Link>
+            </React.Fragment>
           );
         })}
       </div>

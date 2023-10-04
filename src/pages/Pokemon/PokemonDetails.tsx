@@ -1,4 +1,10 @@
-import { Link, useParams, Outlet, NavLink } from "react-router-dom";
+import {
+  Link,
+  useParams,
+  Outlet,
+  NavLink,
+  useLocation,
+} from "react-router-dom";
 import { fetchPokemon } from "@/utils";
 import { useQuery } from "@tanstack/react-query";
 import { Loading } from "../../components/Loading";
@@ -6,9 +12,12 @@ import Details from "../../components/Details";
 
 const PokemonDetails = () => {
   const params = useParams();
+
+  const location = useLocation();
+  console.log(location);
   const pokemonTerm = params.id;
   const { data, isPending, isError, error } = useQuery({
-    queryKey: ["pokemon", { pokemon: pokemonTerm}],
+    queryKey: ["pokemon", { pokemon: pokemonTerm }],
     queryFn: ({ signal }) => fetchPokemon({ signal, pokemonName: pokemonTerm }),
   });
   const activeStyles = {
@@ -32,7 +41,7 @@ const PokemonDetails = () => {
   }
 
   return (
-    <div className=" h-1/2">
+    <div className="h-1/2">
       <Link to=".." relative="path" className="hover:underline text-base">
         ← Back to pokemon
       </Link>

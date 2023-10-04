@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 @tailwind components;
 @tailwind utilities;
 @tailwind base;
@@ -9,15 +8,15 @@
   scrollbar-color: #4a5568 #2d3748;
 }
 
-.dark {
+/* .dark {
   @apply bg-black text-zinc-50;
-}
+} */
 
 @layer base {
   @font-face {
     font-family: "press-start";
     font-weight: 100;
-    src: url("./assets/PressStart2P.ttf") format("truetype");
+    src: url("./assets/fonts/ExoLight.ttf") format("truetype");
   }
 }
 

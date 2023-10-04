@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import pokeGif from "../assets/pokeGif.gif";
 import pokemonLogo from "../assets/pokemonLogo.png";
-import { useNavigate } from "react-router-dom";
 
 function HomePage() {
   return (
@@ -12,9 +11,11 @@ function HomePage() {
         className="md:w-1/2 w-3/4 h-auto"
       />
       <section className="flex items-center justify-between flex-col p-4 h-auto w-auto">
-        <h1 className="md:text-xl text-xs ">Welcome to John's Pokedex</h1>
+        <h1 className="md:text-xl text-xs text-yellow-400 ">
+          Welcome to John's Pokedex
+        </h1>
         <Link to="/search">
-          <h1 className="text-base mt-4 h-10  animate-pulse hover:animate-none hover:underline flex flex-col ">
+          <h1 className="text-base mt-4 h-10 animate-pulse hover:animate-none hover:underline flex flex-col ">
             Press start
           </h1>
         </Link>
