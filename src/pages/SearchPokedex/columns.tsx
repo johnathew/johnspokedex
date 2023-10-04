@@ -20,7 +20,7 @@ export const columns: ColumnDef<PokeResults>[] = [
     header: "Pokedex #",
     cell: ({ row }) => {
       const entry = parseInt(row.original.url.split("/")[6]);
-      return <div className="text-left">{concatZeros(entry)}</div>;
+      return <>{concatZeros(entry)}</>;
     },
 
   },

@@ -11,7 +11,7 @@ interface IHeader {
 const Header = ({ toggleDarkMode, darkMode }: IHeader) => {
   const activeLink = "text-yellow-500 font-bold underline";
   return (
-    <header className="navbar bg-sky-800 text-slate-200 dark:bg-slate-900 z-10 top-0 left-0 rounded-b-lg fixed shadow drop-shadow-xl">
+    <header className="navbar w-full bg-sky-800 text-slate-200 dark:bg-slate-900 z-10 top-0 md:right-4 rounded-b-lg fixed shadow drop-shadow-xl">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -72,7 +72,7 @@ const Header = ({ toggleDarkMode, darkMode }: IHeader) => {
             isActive ? activeLink : "hover:text-yellow-500"
           }
         >
-          <TbPokeball className="md:text-3xl md:ml-2 ml-0 text-xl" />
+          <TbPokeball className="md:text-3xl sm:ml-2 md:ml-4 ml-0 text-xl" />
         </NavLink>
       </div>
       <div className="navbar-center hidden lg:flex">

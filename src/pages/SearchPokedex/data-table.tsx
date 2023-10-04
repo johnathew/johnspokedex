@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/table";
 import React from "react";
 import { Input } from "@/components/ui/input";
+import { Label } from "@radix-ui/react-label";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -34,11 +35,10 @@ export function DataTable<TData, TValue>({
   data,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
-  const [globalFilter, setGlobalFilter] = React.useState("" as string | null );
+  const [globalFilter, setGlobalFilter] = React.useState("" as string | null);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   );
-// TODO: fix global filter to match with pokedex id's
 
   const table = useReactTable({
     data,
@@ -57,15 +57,18 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="rounded-md border border-black mt-20 mb-0 relative pb-2 mx-auto bg-sky-700 md:w-auto">
-      <div className="flex items-center py-4">
+    <div className="rounded-md shrink-0 border-black mb-0 relative pb-2 mx-auto bg-sky-700 md:w-1/2 h-auto drop-shadow-lg">
+      <div className="flex items-center py-4 mt-[70px]">
         <Input
           placeholder="Find Pokemon..."
           type="text"
           value={globalFilter ?? ""}
           onChange={(e) => setGlobalFilter(e.target.value)}
-          className="max-w-sm bg-slate-400 bg-opacity-70 m-2 text-slate-200"
+          className="max-w-sm bg-slate-400 text-xs bg-opacity-70 m-2 text-slate-200"
         />
+        <Label className="text-slate-200 text-xs md:visible tracking-tighter">
+          Search via pokedex number or name
+        </Label>
       </div>
       <Table>
         <TableHeader>
@@ -73,7 +76,10 @@ export function DataTable<TData, TValue>({
             <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
                 return (
-                  <TableHead key={header.id} className="text-yellow-400">
+                  <TableHead
+                    key={header.id}
+                    className="text-yellow-400 text-center"
+                  >
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -92,12 +98,12 @@ export function DataTable<TData, TValue>({
               <TableRow
                 key={row.id}
                 data-state={row.getIsSelected() && "selected"}
-                className="text-left border-black transition hover:border-yellow-500 hover:border-4 hover:border-opacity-75"
+                className="text-center transition hover:border-yellow-500 hover:border-4 hover:border-opacity-75"
               >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell
                     key={cell.id}
-                    className="relative bg-red-700 text-slate-200 hover:text-yellow-500 "
+                    className=" pb-2 bg-red-700 text-slate-200 hover:text-yellow-500 "
                   >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
