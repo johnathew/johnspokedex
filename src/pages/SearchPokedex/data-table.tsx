@@ -57,14 +57,14 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="rounded-md shrink-0 border-black mb-0 relative pb-2 mx-auto bg-sky-700 md:w-1/2 h-auto drop-shadow-lg">
-      <div className="flex items-center py-4 mt-[70px]">
+    <div className="rounded-md shrink-0 border-black mb-0 relative pb-2 mx-auto bg-sky-700 dark:bg-slate-900 md:w-1/2 h-auto drop-shadow-lg">
+      <div className="flex items-center py-4 mt-20">
         <Input
           placeholder="Find Pokemon..."
           type="text"
           value={globalFilter ?? ""}
           onChange={(e) => setGlobalFilter(e.target.value)}
-          className="max-w-sm bg-slate-400 text-xs bg-opacity-70 m-2 text-slate-200"
+          className="max-w-sm bg-slate-200 placeholder:text-slate-700 text-xs bg-opacity-70 m-2 text-slate-700 dark:placeholder:text-slate-50"
         />
         <Label className="text-slate-200 text-xs md:visible tracking-tighter">
           Search via pokedex number or name
@@ -78,7 +78,7 @@ export function DataTable<TData, TValue>({
                 return (
                   <TableHead
                     key={header.id}
-                    className="text-yellow-400 text-center"
+                    className="text-yellow-400 dark:text-yellow-400 text-center"
                   >
                     {header.isPlaceholder
                       ? null
@@ -98,7 +98,7 @@ export function DataTable<TData, TValue>({
               <TableRow
                 key={row.id}
                 data-state={row.getIsSelected() && "selected"}
-                className="text-center transition hover:border-yellow-500 hover:border-4 hover:border-opacity-75"
+                className="text-center text-[11px] transition hover:border-yellow-500 hover:border-4 hover:border-opacity-75"
               >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell

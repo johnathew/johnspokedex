@@ -11,7 +11,7 @@ interface IHeader {
 const Header = ({ toggleDarkMode, darkMode }: IHeader) => {
   const activeLink = "text-yellow-500 font-bold underline";
   return (
-    <header className="navbar w-full bg-sky-800 text-slate-200 dark:bg-slate-900 z-10 top-0 md:right-4 rounded-b-lg fixed shadow drop-shadow-xl">
+    <header className="navbar w-full bg-sky-800 text-slate-200 dark:bg-slate-900 z-10 top-0 rounded-b-lg fixed shadow drop-shadow-xl">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -94,8 +94,8 @@ const Header = ({ toggleDarkMode, darkMode }: IHeader) => {
                 isActive ? activeLink : "hover:text-yellow-500"
               }
             >
-              Pokemon (<TfiInfinite />
-              scrolling)
+              Pokemon <TfiInfinite className="text-lg"/>
+              scrolling
             </NavLink>
           </li>
           <li>
@@ -111,7 +111,7 @@ const Header = ({ toggleDarkMode, darkMode }: IHeader) => {
         </ul>
       </div>
       <div className="navbar-end">
-        <label className="flex items-center text-[8px] md:text-xs font-thin md:mr-2">
+        <label className="flex items-center text-[8px] md:text-[9px] font-thin md:mr-2">
           Dark Mode
           {darkMode ? (
             <BsSun onClick={toggleDarkMode} className="text-lg ml-2" />

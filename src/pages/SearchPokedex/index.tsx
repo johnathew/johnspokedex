@@ -16,7 +16,7 @@ export default function SearchPokedex() {
   if (isError) return <h1>Error: {error?.message}</h1>;
 
   return (
-    <div className="bg-sky-700 w-full h-screen overflow-y-scroll">
+    <div className="bg-sky-700 w-auto h-screen overflow-y-scrol dark:bg-slate-800">
       <DataTable columns={columns} data={data.results} />
     </div>
   );
