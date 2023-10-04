@@ -72,7 +72,7 @@ const Header = ({ toggleDarkMode, darkMode }: IHeader) => {
             isActive ? activeLink : "hover:text-yellow-500"
           }
         >
-          <TbPokeball className="md:text-3xl sm:ml-2 md:ml-4 ml-0 text-xl" />
+          <TbPokeball className="md:text-3xl sm:ml-2 md:ml-4 ml-0 text-xl dark:text-yellow-400" />
         </NavLink>
       </div>
       <div className="navbar-center hidden lg:flex">

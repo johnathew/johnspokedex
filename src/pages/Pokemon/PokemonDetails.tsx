@@ -9,7 +9,7 @@ const PokemonDetails = () => {
   const pokemonTerm = params.id;
   const { data, isPending, isError, error } = useQuery({
     queryKey: ["pokemon", { pokemon: pokemonTerm}],
-    queryFn: ({ signal }) => fetchPokemon({ signal, pokemonTerm }),
+    queryFn: ({ signal }) => fetchPokemon({ signal, pokemonName: pokemonTerm }),
   });
   const activeStyles = {
     fontWeight: "bold",
