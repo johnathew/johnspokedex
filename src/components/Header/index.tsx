@@ -13,7 +13,7 @@ const Header = ({ toggleDarkMode, darkMode }: IHeader) => {
   return (
     <header className="navbar w-full bg-sky-800 text-slate-200 dark:bg-slate-900 z-10 top-0 rounded-b-lg fixed shadow drop-shadow-xl">
       <div className="navbar-start">
-        <div className="dropdown">
+        <div className="dropdown ">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"

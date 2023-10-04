@@ -66,7 +66,7 @@ export function DataTable<TData, TValue>({
           onChange={(e) => setGlobalFilter(e.target.value)}
           className="max-w-sm bg-slate-200 placeholder:text-slate-700 text-xs bg-opacity-70 m-2 text-slate-700 dark:placeholder:text-slate-50"
         />
-        <Label className="text-slate-200 text-xs md:visible tracking-tighter">
+        <Label className="text-slate-200 text-[10px] md:visible tracking-tighter">
           Search via pokedex number or name
         </Label>
       </div>
@@ -78,7 +78,7 @@ export function DataTable<TData, TValue>({
                 return (
                   <TableHead
                     key={header.id}
-                    className="text-yellow-400 dark:text-yellow-400 text-center"
+                    className="text-yellow-400 dark:text-yellow-400 text-center text-xs"
                   >
                     {header.isPlaceholder
                       ? null
