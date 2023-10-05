@@ -5,7 +5,9 @@ import {
   Route,
 } from "react-router-dom";
 import HomePage from "./pages/HomePage";
-import PokemonDetails from "./pages/Pokemon/PokemonDetails";
+import PokemonDetails, {
+  loader as pokemonLoader,
+} from "./pages/Pokemon/PokemonDetails";
 import Layout from "./components/Layout";
 import About from "./pages/About";
 import PokeLocation from "./pages/Pokemon/PokeLocation";
@@ -28,7 +30,12 @@ const router = createBrowserRouter(
         errorElement={<Error />}
       />
       <Route path="/pokemon" element={<Pokemon />} errorElement={<Error />} />
-      <Route path="/search/:id" element={<PokemonDetails />}>
+      <Route
+        path="/search/:id"
+        element={<PokemonDetails />}
+        loader={(queryClient) => pokemonLoader(queryClient)}
+        errorElement={<Error />}
+      >
         <Route index element={<PokeSpeciesInfo />} />
         <Route path="locations" element={<PokeLocation />} />
         <Route path="forms" element={<PokeForms />} />

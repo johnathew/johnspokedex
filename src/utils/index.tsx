@@ -1,24 +1,23 @@
 import { PokeColumn } from "@/pages/SearchPokedex/columns";
 
 export async function fetchPokemon({
-  signal,
-  pokemonName,
+  id,
 }: {
-  signal: AbortSignal;
-  pokemonName?: string;
+  id?: string | number | undefined;
 }) {
   let url = `https://pokeapi.co/api/v2/pokemon/`;
 
-  if (pokemonName) {
-    url = `https://pokeapi.co/api/v2/pokemon/${pokemonName}`;
+  if (id) {
+    url = `https://pokeapi.co/api/v2/pokemon/${id}`;
   }
 
-  const res = await fetch(url, { signal: signal });
+  const res = await fetch(url);
 
   if (!res.ok) {
     const error = new Error("An error occurred while fetching the data");
     throw error;
   }
+
   const data = await res.json();
   return data;
 }
@@ -135,7 +134,6 @@ export function setTypeColor(type: string) {
 }
 
 export const concatZeros = (num: number) => {
-
   if (num < 10) {
     return `00${num}`;
   } else if (num < 100) {
