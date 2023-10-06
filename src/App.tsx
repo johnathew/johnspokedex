@@ -17,7 +17,6 @@ import NotFound from "./pages/NotFound";
 import Error from "./components/Error";
 import Pokemon from "./pages/Pokemon";
 import SearchPokedex from "./pages/SearchPokedex";
-import { queryClient } from "./main";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,13 +24,13 @@ const router = createBrowserRouter(
       <Route path="/" element={<HomePage />} />
       <Route path="/about" element={<About />} />
       <Route
-        path="/search"
+        path="/pokedex"
         element={<SearchPokedex />}
         errorElement={<Error />}
       />
       <Route path="/pokemon" element={<Pokemon />} errorElement={<Error />} />
       <Route
-        path="/search/:id"
+        path="/pokemon/:id"
         element={<PokemonDetails />}
         loader={(queryClient) => pokemonLoader(queryClient)}
         errorElement={<Error />}

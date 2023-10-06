@@ -1,4 +1,4 @@
-import { Link, useParams, NavLink, useLoaderData } from "react-router-dom";
+import { Link, useParams, NavLink, useLocation } from "react-router-dom";
 import { fetchPokemon } from "@/utils";
 import { useQuery } from "@tanstack/react-query";
 import { Loading } from "../../components/Loading";
@@ -28,6 +28,8 @@ export function loader(queryClient: any) {
 const PokemonDetails = () => {
   const params = useParams();
   const { data } = useQuery(pokemonDetailQuery(params.id!));
+  const location = useLocation()
+  console.log(location)
 
   const activeStyles = {
     color: "white",
@@ -39,7 +41,7 @@ const PokemonDetails = () => {
   // make back link relative to current path
   return (
     <div className="h-1/2 w-auto mt-14">
-      <Link to=".." relative="path" className="hover:underline text-base">
+      <Link to="/pokedex"  className="hover:underline text-base">
         ← Back to pokemon
       </Link>
       {content}

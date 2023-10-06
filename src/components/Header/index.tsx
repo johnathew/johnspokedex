@@ -36,12 +36,12 @@ const Header = ({ toggleDarkMode, darkMode }: IHeader) => {
           >
             <li>
               <NavLink
-                to="/search"
+                to="/pokedex"
                 className={({ isActive }) =>
                   isActive ? activeLink : "hover:text-yellow-500"
                 }
               >
-                Search
+                Pokedex
               </NavLink>
             </li>
             <li>
@@ -79,12 +79,12 @@ const Header = ({ toggleDarkMode, darkMode }: IHeader) => {
         <ul className="menu menu-horizontal">
           <li>
             <NavLink
-              to="/search"
+              to="/pokedex"
               className={({ isActive }) =>
                 isActive ? activeLink : "hover:text-yellow-500"
               }
             >
-              Search
+              Pokedex
             </NavLink>
           </li>
           <li>
