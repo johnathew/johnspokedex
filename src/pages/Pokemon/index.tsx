@@ -1,5 +1,4 @@
 import { Loading } from "@/components/Loading";
-import { Link } from "react-router-dom";
 import { getInfinitePokemon, setTypeColor, concatZeros } from "@/utils";
 import { useIntersection } from "@mantine/hooks";
 import { useInfiniteQuery } from "@tanstack/react-query";

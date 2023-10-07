@@ -6,7 +6,6 @@ import { CiHashtag } from "react-icons/ci";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { IPokemon } from "@/types/pokemonActionTypes";
-import { TbPokeball } from "react-icons/tb";
 
 export type PokeColumn = {
   results: PokeResults[];
@@ -44,21 +43,15 @@ export const columns: ColumnDef<IPokemon>[] = [
     header: "Pokemon",
     cell: ({ row }) => {
       const name = row.original.name;
-
       const sprite = row.original.sprites.front_default;
 
-      const ref = useRef<HTMLAnchorElement>(null);
       return (
         <Link
           to={`/pokemon/${name}`}
           className="flex items-center justify-center hover:underline"
-          ref={ref}
+          preventScrollReset
         >
-          <img
-            src={sprite}
-            alt={name}
-            className="w-12 h-auto"
-          />
+          <img src={sprite} alt={name} className="w-12 h-auto" />
           <p className="text-center ml-2">
             {name.charAt(0).toUpperCase() + name.slice(1)}
           </p>
@@ -70,7 +63,7 @@ export const columns: ColumnDef<IPokemon>[] = [
     accessorKey: "types",
     header: "Type",
     cell: ({ row }) => {
-      const types = row?.original?.types?.map((type: any) => (
+      const types = row.original.types?.map((type: any) => (
         <li
           className={`${setTypeColor(
             type.type.name

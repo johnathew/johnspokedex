@@ -14,7 +14,7 @@ function HomePage() {
         <h1 className="md:text-xl text-xs text-yellow-400 ">
           Welcome to John's Pokedex
         </h1>
-        <Link to="/search">
+        <Link to="/pokedex">
           <h1 className="text-base mt-4 h-10 animate-pulse hover:animate-none hover:underline flex flex-col ">
             Press start
           </h1>

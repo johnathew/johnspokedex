@@ -7,7 +7,7 @@ const Details = ({ data }: { data: IPokemon }) => {
       <div className="flex w-1/2 h-auto justify-center items-center bg-slate-200 rounded-lg shadow-lg border-[1px] border-double border-black bg-opacity-50 dark:bg-black dark:border-white ">
         <div className="flex flex-col w-auto text-center">
           <img
-            src={data.sprites.front_default}
+            src={data.sprites.other['official-artwork'].front_default}
             alt={data.name}
             className="md:w-36"
           />

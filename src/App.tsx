@@ -16,7 +16,7 @@ import PokeForms from "./pages/Pokemon/PokeForms";
 import NotFound from "./pages/NotFound";
 import Error from "./components/Error";
 import Pokemon from "./pages/Pokemon";
-import SearchPokedex from "./pages/SearchPokedex";
+import SearchPokedex, { loader as fetchAllLoader } from "./pages/SearchPokedex";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,6 +26,7 @@ const router = createBrowserRouter(
       <Route
         path="/pokedex"
         element={<SearchPokedex />}
+        loader={(queryClient) => fetchAllLoader(queryClient)}
         errorElement={<Error />}
       />
       <Route path="/pokemon" element={<Pokemon />} errorElement={<Error />} />

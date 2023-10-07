@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Outlet } from "react-router-dom";
+import { useState } from "react";
+import { Outlet, ScrollRestoration } from "react-router-dom";
 import Header from "../Header";
 import Footer from "../Footer";
 const Layout = () => {
@@ -18,6 +18,12 @@ const Layout = () => {
       <Header toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
       <Outlet />
       <Footer />
+      <ScrollRestoration
+        getKey={(location, matches) => {
+          console.log(location.pathname, "location");
+          return location.pathname;
+        }}
+      />
     </div>
   );
 };

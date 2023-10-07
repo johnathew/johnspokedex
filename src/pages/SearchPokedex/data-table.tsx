@@ -16,7 +16,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import React from "react";
+import React, { useRef } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@radix-ui/react-label";
 
@@ -39,6 +39,12 @@ export function DataTable<TData, TValue>({
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   );
+
+  const ref = useRef<HTMLTableRowElement>(null);
+
+  const handleClick = () => {
+    console.log(ref)  
+  };
 
   const table = useReactTable({
     data,
@@ -98,13 +104,15 @@ export function DataTable<TData, TValue>({
             table.getRowModel().rows.map((row) => (
               <TableRow
                 key={row.id}
+                ref={ref}
+                onClick={handleClick}
                 data-state={row.getIsSelected() && "selected"}
                 className="text-center md:text-sm text-xs hover:border-yellow-500 hover:border-[1px] hover:text-black dark:hover:text-yellow-400 hover:bg-slate-900 hover:bg-opacity-50"
               >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell
                     key={cell.id}
-                    className=" pb-2 dark:bg-slate-700 text-slate-200  "
+                    className="pb-2 dark:bg-slate-700 text-slate-200  "
                   >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
