@@ -3,9 +3,8 @@ import { setTypeColor } from "@/utils";
 import { ColumnDef } from "@tanstack/react-table";
 import { BsArrowDownUp } from "react-icons/bs";
 import { CiHashtag } from "react-icons/ci";
-import { useRef } from "react";
-import { Link } from "react-router-dom";
 import { IPokemon } from "@/types/pokemonActionTypes";
+import { Link } from "react-router-dom";
 
 export type PokeColumn = {
   results: PokeResults[];
@@ -44,13 +43,8 @@ export const columns: ColumnDef<IPokemon>[] = [
     cell: ({ row }) => {
       const name = row.original.name;
       const sprite = row.original.sprites.front_default;
-
       return (
-        <Link
-          to={`/pokemon/${name}`}
-          className="flex items-center justify-center hover:underline"
-          preventScrollReset
-        >
+        <Link to={`/pokedex/${name}`} preventScrollReset={true}>
           <img src={sprite} alt={name} className="w-12 h-auto" />
           <p className="text-center ml-2">
             {name.charAt(0).toUpperCase() + name.slice(1)}

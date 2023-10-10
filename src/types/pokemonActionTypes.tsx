@@ -13,6 +13,12 @@ export interface PokeContext {
   pokemon: IPokemon;
 }
 
+export interface PokeState {
+  query: IPokemon[];
+  loading: boolean;
+  error: string;
+}
+
 export interface IPokemon {
   name: string;
   height: number;

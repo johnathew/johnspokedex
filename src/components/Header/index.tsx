@@ -94,7 +94,7 @@ const Header = ({ toggleDarkMode, darkMode }: IHeader) => {
                 isActive ? activeLink : "hover:text-yellow-500"
               }
             >
-              Pokemon <TfiInfinite className="text-lg"/>
+              Pokemon <TfiInfinite className="text-lg" />
               scrolling
             </NavLink>
           </li>

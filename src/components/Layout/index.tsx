@@ -19,9 +19,8 @@ const Layout = () => {
       <Outlet />
       <Footer />
       <ScrollRestoration
-        getKey={(location, matches) => {
-          console.log(location.pathname, "location");
-          return location.pathname;
+        getKey={(location) => {
+          return location.key;
         }}
       />
     </div>

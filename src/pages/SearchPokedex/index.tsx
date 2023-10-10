@@ -2,39 +2,42 @@ import { fetchAllPokemon } from "@/utils";
 import { DataTable } from "./data-table";
 import { columns } from "./columns";
 import { useQuery } from "@tanstack/react-query";
+import { defer, Await, useLoaderData } from "react-router-dom";
+import { Suspense } from "react";
+import { PokeState } from "@/types/pokemonActionTypes";
 
 const fetchAllPokemonQuery = {
   queryKey: ["allPokemon"],
-  queryFn: fetchAllPokemon,
+  queryFn: ({ signal }: { signal: AbortSignal }) => fetchAllPokemon({ signal }),
 };
 
-export function loader(queryClient: any) {
-  return async () => {
-    const query = {
-      queryKey: ["allPokemon"],
-      queryFn: fetchAllPokemon,
-    };
-
-    return (
-      queryClient.getQueryData(query.queryKey) ??
-      (await queryClient.fetchQuery({
-        ...query,
-        staleTime: Infinity,
-        gcTime: Infinity,
-      }))
-    );
-  };
-}
+export const loader = (queryClient: any) => () => {
+  const queryPromise = queryClient.fetchQuery(fetchAllPokemonQuery);
+  return defer({ queryPromise });
+};
 
 export default function SearchPokedex() {
-  const { data, isPending} = useQuery(fetchAllPokemonQuery);
+  const loaderData = useLoaderData() as PokeState;
 
-  if (isPending) {
-    return <div>Loading...</div>;
-  }
+  const { data } = useQuery({
+    queryKey: ["allPokemon"],
+    queryFn: ({ signal }: { signal: AbortSignal }) =>
+      fetchAllPokemon({ signal }),
+  });
+
   return (
-    <div className="bg-sky-700 relative w-full h-screen overflow-y-scroll dark:bg-slate-800">
-      <DataTable columns={columns} data={data || []} />
+    <div className="bg-sky-700 relative w-full h-full overflow-auto dark:bg-slate-800">
+      {data === undefined ? (
+        <Suspense fallback={<p>Loading package location...</p>}>
+          <Await resolve={loaderData}>
+            {(data) => {
+              return <DataTable columns={columns} data={data} />;
+            }}
+          </Await>
+        </Suspense>
+      ) : (
+        <DataTable columns={columns} data={data} />
+      )}
     </div>
   );
 }
