@@ -1,4 +1,4 @@
-import { getEntry } from "@/utils";
+import { getEntry } from "@/utils/getEntry";
 import { Link } from "react-router-dom";
 
 const PokemonListItem = ({
