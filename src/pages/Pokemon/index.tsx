@@ -1,5 +1,7 @@
 import { Loading } from "@/components/Loading";
-import { getInfinitePokemon, setTypeColor, concatZeros } from "@/utils";
+import { getInfinitePokemon } from "@/utils/getInfinitPokemon";
+import { setTypeColor } from "@/utils/setTypeColor";
+import { concatZeros } from "@/utils/concatZeros";
 import { useIntersection } from "@mantine/hooks";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useEffect, useRef } from "react";
@@ -57,7 +59,7 @@ const Pokemon = () => {
     <>
       <div className="bg-sky-700 w-full h-auto flex items-center justify-center dark:bg-slate-800">
         <Label className="text-white px-2 mt-8 md:mt-3">Search Pokemon</Label>
-        <Input type="search"/>
+        <Input type="search" />
       </div>
       <div className="w-auto grid h-auto md:grid-cols-3 md:p-8 gap-8 grid-cols-1 bg-sky-700 dark:bg-slate-800">
         {pokemonItems?.map((pokemon, index) => {

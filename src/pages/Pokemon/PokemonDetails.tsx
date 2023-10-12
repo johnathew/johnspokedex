@@ -4,14 +4,14 @@ import { useQuery } from "@tanstack/react-query";
 import { Loading } from "../../components/Loading";
 import Details from "../../components/Details";
 import { queryOptions } from "@tanstack/react-query";
-
+import { queryClient } from "@/App";
 const pokemonDetailQuery = (id: number | string) =>
   queryOptions({
     queryKey: ["pokemonDetail", id],
     queryFn: async () => fetchPokemon({ id }),
   });
 
-export function loader(queryClient: any) {
+export function loader() {
   return async ({ params }: { params: { id: string | number } }) => {
     const query = pokemonDetailQuery(params.id);
     return (
@@ -42,7 +42,7 @@ const PokemonDetails = () => {
       <Link
         to="/pokedex"
         className="hover:underline text-base"
-        preventScrollReset
+        preventScrollReset={true}
         state={{ from: location.pathname }}
       >
         ← Back to pokemon

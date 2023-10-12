@@ -16,9 +16,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@radix-ui/react-label";
+import { ScrollRestoration } from "react-router-dom";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -59,7 +60,7 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="rounded-md shrink-0 border-black mb-0 relative pb-2 mx-auto bg-sky-700 dark:bg-slate-900 md:w-3/4 h-auto drop-shadow-lg">
+    <div className="rounded-md shrink-0 border-black mb-0 o relative pb-2 mx-auto bg-sky-700 dark:bg-slate-900 md:w-full md:h-auto h-full drop-shadow-lg">
       <div className="flex items-center py-4">
         <Input
           placeholder="Find Pokemon..."
@@ -96,16 +97,18 @@ export function DataTable<TData, TValue>({
           ))}
         </TableHeader>
         <TableBody>
-          {table.getRowModel().rows.map((row) => (
+          {table.getRowModel().rows.map((row, i, id) => (
             <TableRow
               key={row.id}
-              ref={() => rowRef}
+              id={id[i].id}
+              ref={rowRef}
               data-state={row.getIsSelected() && "selected"}
               className="text-center md:text-sm text-xs hover:border-yellow-500 hover:border-[1px] hover:text-black dark:hover:text-yellow-400 hover:bg-slate-900 hover:bg-opacity-50"
             >
               {row.getVisibleCells().map((cell) => (
                 <TableCell
                   key={cell.id}
+                  id={cell.id}
                   className="pb-2 dark:bg-slate-700 text-slate-200  "
                 >
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}

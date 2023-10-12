@@ -1,4 +1,5 @@
-import { concatZeros, setTypeColor } from "@/utils";
+import { concatZeros } from "@/utils/concatZeros";
+import { setTypeColor } from "@/utils/setTypeColor";
 import { IPokemon } from "../../types/pokemonActionTypes";
 
 const Details = ({ data }: { data: IPokemon }) => {

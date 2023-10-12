@@ -17,12 +17,12 @@ const Layout = () => {
     >
       <Header toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
       <Outlet />
-      <Footer />
       <ScrollRestoration
         getKey={(location) => {
-          return location.key;
+          return location.pathname;
         }}
       />
+      <Footer />
     </div>
   );
 };

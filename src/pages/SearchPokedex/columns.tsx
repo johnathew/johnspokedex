@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { setTypeColor } from "@/utils";
+import { setTypeColor } from "@/utils/setTypeColor";
 import { ColumnDef } from "@tanstack/react-table";
 import { BsArrowDownUp } from "react-icons/bs";
 import { CiHashtag } from "react-icons/ci";
@@ -44,8 +44,12 @@ export const columns: ColumnDef<IPokemon>[] = [
       const name = row.original.name;
       const sprite = row.original.sprites.front_default;
       return (
-        <Link to={`/pokedex/${name}`} preventScrollReset={true}>
-          <img src={sprite} alt={name} className="w-12 h-auto" />
+        <Link
+          to={`/pokedex/${name}`}
+          preventScrollReset={true}
+          className="flex items-center"
+        >
+          <img src={sprite} alt={name} className="w-10 h-auto" />
           <p className="text-center ml-2">
             {name.charAt(0).toUpperCase() + name.slice(1)}
           </p>
