@@ -5,6 +5,7 @@ import { BsArrowDownUp } from "react-icons/bs";
 import { CiHashtag } from "react-icons/ci";
 import { IPokemon } from "@/types/pokemonActionTypes";
 import { Link } from "react-router-dom";
+import { concatZeros } from "@/utils/concatZeros";
 
 export type PokeColumn = {
   results: PokeResults[];
@@ -20,8 +21,8 @@ export const columns: ColumnDef<IPokemon>[] = [
     accessorKey: "id",
     header: ({ column }) => {
       return (
-        <div className="flex items-center align-middle justify-center">
-          <p className="flex items-center justify-center">
+        <div className="flex items-center align-middle justify-center w-auto">
+          <p className="flex items-center justify-center left-2">
             Pokedex <CiHashtag className="inline-block text-xl ml-1" />
           </p>
           <Button
@@ -36,6 +37,10 @@ export const columns: ColumnDef<IPokemon>[] = [
         </div>
       );
     },
+    cell: ({ row }) => {
+      const id = row.original.id;
+      return concatZeros(id);
+    },
   },
   {
     accessorKey: "name",
@@ -49,8 +54,12 @@ export const columns: ColumnDef<IPokemon>[] = [
           preventScrollReset={true}
           className="flex items-center justify-center"
         >
-          <img src={sprite} alt={name} className="md:w-14 mr-2 h-auto" />
-          <p className="text-left ml-2">
+          <img
+            src={sprite}
+            alt={name}
+            className="md:w-14 w-12 md:mr-2 h-auto"
+          />
+          <p className="text-left md:ml-2">
             {name.charAt(0).toUpperCase() + name.slice(1)}
           </p>
         </Link>
@@ -65,7 +74,7 @@ export const columns: ColumnDef<IPokemon>[] = [
         <li
           className={`${setTypeColor(
             type.type.name
-          )} w-full p-0.5 mx-1 rounded-md text-[10px]`}
+          )} w-1/2 p-0.5 mx-1 rounded-md text-[10px]`}
           key={type.type.name}
         >
           {type.type.name}

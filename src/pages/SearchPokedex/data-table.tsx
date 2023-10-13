@@ -16,10 +16,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import React, { useEffect, useRef } from "react";
-import { Input } from "@/components/ui/input";
+import React, { useRef } from "react";
+import DebouncedInput, { Input } from "@/components/ui/input";
 import { Label } from "@radix-ui/react-label";
-import { ScrollRestoration } from "react-router-dom";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -36,7 +35,9 @@ export function DataTable<TData, TValue>({
   data,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
-  const [globalFilter, setGlobalFilter] = React.useState("" as string | null);
+  const [globalFilter, setGlobalFilter] = React.useState(
+    "" as string | null | number | undefined
+  );
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   );
@@ -60,21 +61,23 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="rounded-md shrink-0 border-black mb-0 o relative pb-2 mx-auto bg-sky-700 dark:bg-slate-900 md:w-3/4 md:h-auto h-full drop-shadow-lg">
-      <div className="flex items-center py-4">
-        <Input
+    <div className="rounded-md shrink-0 border-black mb-0 o relative pb-2 mx-auto bg-sky-700 dark:bg-slate-900 w-full h-auto drop-shadow-lg">
+      <div className="flex items-center justify-center w-auto py-4">
+        <DebouncedInput
           placeholder="Find Pokemon..."
           type="text"
           id="search-pokemon"
           value={globalFilter ?? ""}
-          onChange={(e) => setGlobalFilter(e.target.value)}
-          className="max-w-sm bg-slate-200 placeholder:text-slate-700 text-xs bg-opacity-70 m-2 text-slate-700 dark:placeholder:text-slate-50"
+          onChange={(value) => {
+            setGlobalFilter(value);
+          }}
+          className="max-w-sm bg-slate-200 placeholder:text-slate-700 text-xs bg-opacity-70 m-2 text-slate-700 dark:placeholder:text-slate-200 dark:bg-slate-900 dark:text-slate-200 dark:bg-opacity-70"
         />
         <Label className="text-slate-200 text-xs md:visible">
           Search via pokedex number or name
         </Label>
       </div>
-      <Table>
+      <Table className="md:w-3/4 mx-auto">
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
@@ -103,7 +106,7 @@ export function DataTable<TData, TValue>({
               id={id[i].id}
               ref={rowRef}
               data-state={row.getIsSelected() && "selected"}
-              className="text-center md:text-sm text-xs hover:border-yellow-500 hover:border-[1px] hover:text-black dark:hover:text-yellow-400 hover:bg-slate-900 hover:bg-opacity-50"
+              className="text-center w-auto md:text-sm text-xs hover:border-yellow-500 hover:border-[1px] hover:text-black dark:hover:text-yellow-400 hover:bg-slate-900 hover:bg-opacity-50"
             >
               {row.getVisibleCells().map((cell) => (
                 <TableCell

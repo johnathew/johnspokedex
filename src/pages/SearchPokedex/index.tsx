@@ -6,17 +6,8 @@ import { Suspense } from "react";
 import Fallback from "@/components/Fallback";
 import { queryClient } from "@/App";
 import { PokeState } from "@/types/pokemonActionTypes";
-
-export const loader = async () => {
-  return defer({
-    query: queryClient.fetchQuery({
-      queryKey: ["allPokemon"],
-      queryFn: async ({ signal }: { signal: AbortSignal }) =>
-        fetchAllPokemon({ signal }),
-    }),
-  });
-};
-export default function SearchPokedex() {
+import { memo } from "react";
+function SearchPokedex() {
   const loaderData = useLoaderData();
 
   return (
@@ -29,3 +20,15 @@ export default function SearchPokedex() {
     </Suspense>
   );
 }
+
+export const loader = () => {
+  return defer({
+    query: queryClient.ensureQueryData({
+      queryKey: ["allPokemon"],
+      queryFn: ({ signal }: { signal: AbortSignal }) =>
+        fetchAllPokemon({ signal }),
+    }),
+  });
+};
+
+export default memo(SearchPokedex);

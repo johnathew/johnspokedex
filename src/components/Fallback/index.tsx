@@ -3,7 +3,7 @@ import { Progress } from "@/components/ui/progress";
 import { useState, useEffect } from "react";
 
 const Fallback = () => {
-  const [progress, setProgress] = useState(10);
+  const [progress, setProgress] = useState(20);
 
   useEffect(() => {
     const timer = setTimeout(() => setProgress(80), 500);
