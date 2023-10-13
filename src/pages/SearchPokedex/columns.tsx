@@ -47,10 +47,10 @@ export const columns: ColumnDef<IPokemon>[] = [
         <Link
           to={`/pokedex/${name}`}
           preventScrollReset={true}
-          className="flex items-center"
+          className="flex items-center justify-center"
         >
-          <img src={sprite} alt={name} className="w-10 h-auto" />
-          <p className="text-center ml-2">
+          <img src={sprite} alt={name} className="md:w-14 mr-2 h-auto" />
+          <p className="text-left ml-2">
             {name.charAt(0).toUpperCase() + name.slice(1)}
           </p>
         </Link>

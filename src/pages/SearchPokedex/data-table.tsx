@@ -60,7 +60,7 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="rounded-md shrink-0 border-black mb-0 o relative pb-2 mx-auto bg-sky-700 dark:bg-slate-900 md:w-full md:h-auto h-full drop-shadow-lg">
+    <div className="rounded-md shrink-0 border-black mb-0 o relative pb-2 mx-auto bg-sky-700 dark:bg-slate-900 md:w-3/4 md:h-auto h-full drop-shadow-lg">
       <div className="flex items-center py-4">
         <Input
           placeholder="Find Pokemon..."
