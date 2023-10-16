@@ -88,13 +88,10 @@ function App() {
 
 export default App;
 
-//todo: add debounced input to search, style details page amd pokedex table,
-// add more info to details page, add more info to search page,
+//todo: style details page, pokedex table,
+// add more info to details page
 // style about me page
-// add pagination to pokedex table
+// add option to view paginated pokedex table
 // add search by type
-
-//add spinner to search page when loader fires
-//preserve cache on refresh
-
+// add hover to question mark to show ability description
 

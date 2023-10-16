@@ -30,7 +30,7 @@ export function setTypeColor(type: string) {
         typeColor = "bg-amber-700";
         break;
       case "flying":
-        typeColor = "bg-cyan-600";
+        typeColor = "bg-cyan-600 ";
         break;
       case "psychic":
         typeColor = "bg-pink-800";
@@ -45,7 +45,7 @@ export function setTypeColor(type: string) {
         typeColor = "bg-purple-500";
         break;
       case "dark":
-        typeColor = "bg-gray-800";
+        typeColor = "bg-slate-900";
         break;
       case "dragon":
         typeColor = "bg-violet-900";

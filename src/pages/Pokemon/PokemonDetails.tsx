@@ -38,10 +38,10 @@ const PokemonDetails = () => {
   let content = data ? <Details data={data} /> : <Loading />;
 
   return (
-    <div className="h-1/2 w-auto mt-14">
+    <div className="h-full w-auto bg-sky-700 dark:bg-slate-800 flex flex-col justify-center items-center">
       <Link
         to="/pokedex"
-        className="hover:underline text-base"
+        className="hover:underline text-slate-200 text-[11px] font-semibold"
         preventScrollReset={true}
         state={{ from: location.pathname }}
       >
