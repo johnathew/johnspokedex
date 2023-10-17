@@ -6,25 +6,33 @@ import { AiFillQuestionCircle } from "react-icons/ai";
 const Details = ({ data }: { data: IPokemon }) => {
   return (
     <div className="dark:text-white flex-shrink-0 w-full h-auto pt-2 text-black flex justify-center items-center flex-col">
-      <div className="flex w-3/4 h-auto  md:w-1/2 justify-center  dark:bg-slate-900 items-center bg-slate-200 rounded-md shadow-lg border-[2px] border-black bg-opacity-50 dark:border-yellow-500">
-        <div className="flex flex-col w-auto text-center">
+      <div className="flex w-full h-auto  md:w-full justify-center  dark:bg-slate-900 items-center bg-slate-200 rounded-md shadow-lg border-[2px] border-black bg-opacity-50 dark:border-yellow-300">
+        <section
+          className="flex flex-col w-auto text-center text-xs md:text-xl"
+          id="pokemonImage"
+        >
           <img
             src={data.sprites.other["official-artwork"].front_default}
             alt={data.name}
-            className="md:w-36"
+            className="md:w-64 w-40 h-40 md:h-auto"
           />
           <p>
             {" "}
-            <span className="dark:text-yellow-500 text-blue-700">No.</span>{" "}
+            <span className="dark:text-yellow-300 text-blue-700 ">
+              No.
+            </span>{" "}
             {concatZeros(data.id)}
           </p>
-        </div>
-        <div className="flex flex-col text-left border-b-4 border-black border-r-4 border-double m-2 items-center p-4 dark:border-yellow-500 rounded-2xl shadow-xl">
-          <p className="text-base font-normal tracking-wide">
+        </section>
+        <section
+          className="flex flex-col text-left border-b-4 border-black border-r-4 border-double m-2 items-center p-4 dark:border-yellow-300 rounded-2xl shadow-xl"
+          id="main-info"
+        >
+          <p className="md:text-base font-normal tracking-wide text-[10px]">
             {data.name.charAt(0).toUpperCase() + data.name.slice(1)}
           </p>
           <div className="flex justify-between mb-1">
-            <span className="text-xs text-blue-700 dark:text-yellow-500">
+            <span className="text-xs text-blue-700 dark:text-yellow-300">
               HP
             </span>
             <span className="text-[10px] ml-2">100%</span>
@@ -40,22 +48,22 @@ const Details = ({ data }: { data: IPokemon }) => {
           </div>
           <ul className="text-xs md:text-base text-left w-full">
             <li>
-              <span className="text-blue-700 dark:text-yellow-500">HT:</span>{" "}
+              <span className="text-blue-700 dark:text-yellow-300">HT:</span>{" "}
               <span className="text-[10px] md:text-sm">{data.height}" </span>
             </li>
             <li className="flex items-center">
-              <span className="text-blue-700 dark:text-yellow-500">WT: </span>
+              <span className="text-blue-700 dark:text-yellow-300">WT: </span>
               <span className="text-[10px] ml-0.5 md:text-sm">
                 {" "}
                 {data.weight} lbs.
               </span>
             </li>
           </ul>
-        </div>
+        </section>
       </div>
       <div className="w-3/4 p-2 rounded-md text-slate-200 md:w-1/2">
-        <div className="flex items-center flex-col text-xs">
-          <label className="md:text-xl dark:text-yellow-500 underline md:underline-offset-4 underline-offset-2">
+        <section className="flex items-center flex-col text-xs" id="types">
+          <label className="md:text-xl dark:text-yellow-300 underline md:underline-offset-4 underline-offset-2">
             {data.types?.length! > 1 ? "Types" : "Type"}{" "}
           </label>
           <ul className="flex">
@@ -70,9 +78,12 @@ const Details = ({ data }: { data: IPokemon }) => {
               </li>
             ))}
           </ul>
-        </div>
-        <div className="flex items-center justify-center flex-col text-xs">
-          <label className="md:text-xl  dark:text-yellow-500 underline md:underline-offset-4 underline-offset-2">
+        </section>
+        <section
+          className="flex items-center justify-center flex-col text-xs"
+          id="abilities"
+        >
+          <label className="md:text-xl  dark:text-yellow-300 underline md:underline-offset-4 underline-offset-2">
             Abilities
           </label>
           <ul className="flex gap-2">
@@ -86,7 +97,7 @@ const Details = ({ data }: { data: IPokemon }) => {
               </li>
             ))}
           </ul>
-        </div>
+        </section>
       </div>
     </div>
   );

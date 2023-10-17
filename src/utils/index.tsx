@@ -22,7 +22,7 @@ export async function fetchPokemon({
   return data;
 }
 
-export async function fetchPokemonSpecies(pokeName: string) {
+export async function fetchPokemonSpecies(pokeName: string | number) {
   const res = await fetch(
     `https://pokeapi.co/api/v2/pokemon-species/${pokeName}`
   );

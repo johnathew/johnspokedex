@@ -6,12 +6,14 @@ import PokemonDetails, {
 import Layout from "./components/Layout";
 import About from "./pages/About";
 import PokeLocation from "./pages/Pokemon/PokeLocation";
-import PokeSpeciesInfo from "./pages/Pokemon/PokeSpeciesInfo";
+import PokeSpeciesInfo, {
+  loader as speciesLoader,
+} from "./pages/Pokemon/PokeSpeciesInfo";
 import PokeForms from "./pages/Pokemon/PokeForms";
 import NotFound from "./pages/NotFound";
 import Error from "./components/Error";
 import Pokemon from "./pages/Pokemon";
-import SearchPokedex, {loader as pokedexLoader} from "./pages/SearchPokedex";
+import SearchPokedex, { loader as pokedexLoader } from "./pages/SearchPokedex";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
@@ -58,6 +60,8 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <PokeSpeciesInfo />,
+            loader: speciesLoader,
+            errorElement: <Error />,
           },
           {
             path: "locations",
@@ -83,7 +87,7 @@ function App() {
       <RouterProvider router={router} />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
-  )
+  );
 }
 
 export default App;
@@ -93,5 +97,4 @@ export default App;
 // style about me page
 // add option to view paginated pokedex table
 // add search by type
-// add hover to question mark to show ability description
-
+// add hover to question mark to show ability description https://pokeapi.co/api/v2/ability/NAME

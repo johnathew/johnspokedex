@@ -1,4 +1,9 @@
-import { Link, useParams, NavLink, useLocation } from "react-router-dom";
+import {
+  Link,
+  useParams,
+  NavLink,
+  Outlet,
+} from "react-router-dom";
 import { fetchPokemon } from "@/utils";
 import { useQuery } from "@tanstack/react-query";
 import { Loading } from "../../components/Loading";
@@ -18,8 +23,6 @@ export function loader() {
       queryClient.getQueryData(query.queryKey) ??
       (await queryClient.fetchQuery({
         ...query,
-        staleTime: 1000 * 60 * 60 * 24,
-        gcTime: Infinity,
       }))
     );
   };
@@ -28,8 +31,6 @@ export function loader() {
 const PokemonDetails = () => {
   const params = useParams();
   const { data } = useQuery(pokemonDetailQuery(params.id!));
-  const location = useLocation();
-
   const activeStyles = {
     color: "white",
     textDecoration: "underline",
@@ -38,40 +39,43 @@ const PokemonDetails = () => {
   let content = data ? <Details data={data} /> : <Loading />;
 
   return (
-    <div className="h-full w-auto bg-sky-700 dark:bg-slate-800 flex flex-col justify-center items-center">
+    <div className="h-full w-auto bg-sky-700 dark:bg-slate-800 flex flex-col justify-center items-center mt-3 md:mt-0">
       <Link
         to="/pokedex"
-        className="hover:underline text-slate-200 text-[11px] font-semibold"
+        className="hover:underline text-slate-200 text-[11px] font-semibold mt-2"
         preventScrollReset={true}
         state={{ from: location.pathname }}
       >
         ← Back to pokemon
       </Link>
-      {content}
-      <nav className="flex space-x-10 items-center justify-center mb-4">
-        <NavLink
-          to="."
-          end
-          className="hover:underline"
-          style={({ isActive }) => (isActive ? activeStyles : undefined)}
-        >
-          Species
-        </NavLink>
-        <NavLink
-          to="./locations"
-          className="hover:underline"
-          style={({ isActive }) => (isActive ? activeStyles : undefined)}
-        >
-          Locations
-        </NavLink>
-        <NavLink
-          to="./forms"
-          className="hover:underline"
-          style={({ isActive }) => (isActive ? activeStyles : undefined)}
-        >
-          Forms
-        </NavLink>
-      </nav>
+      <div>
+        {content}
+        <nav className="flex space-x-10 items-center justify-center mb-4">
+          <NavLink
+            to="."
+            end
+            className="hover:underline"
+            style={({ isActive }) => (isActive ? activeStyles : undefined)}
+          >
+            Species
+          </NavLink>
+          <NavLink
+            to="./locations"
+            className="hover:underline"
+            style={({ isActive }) => (isActive ? activeStyles : undefined)}
+          >
+            Locations
+          </NavLink>
+          <NavLink
+            to="./forms"
+            className="hover:underline"
+            style={({ isActive }) => (isActive ? activeStyles : undefined)}
+          >
+            Forms
+          </NavLink>
+        </nav>
+      </div>
+      <Outlet />
     </div>
   );
 };
