@@ -40,45 +40,68 @@ const PokeSpeciesInfo = () => {
   if (data) {
     const version = findFlavorText(data.flavor_text_entries);
     content = (
-      <div className="p-10 mt-0 flex flex-col items-center text-slate-200">
-        <div className="flex bg-red-200">
+      <div className="w-3/4 md:w-1/2 p-2 h-1/3 md:h-auto flex flex-col items-center text-black dark:text-slate-200  bg-slate-200 dark:bg-slate-900 bg-opacity-50 rounded-md border-2 border-black dark:border-yellow-500 shadow-md">
+        <div className="flex w-full rounded-md h-auto p-1 bg-slate-950 dark:bg-opacity-50 justify-start items-center border-b-2 border-double border-black dark:border-yellow-500">
           <MdOutlineCatchingPokemon
-            className="text-red-700 text-4xl active:scale-125"
+            className="text-red-700 text-2xl md:text-5xl active:scale-125"
             onClick={() => setGameVersion("red")}
           />
           <MdOutlineCatchingPokemon
-            className="text-blue-700 text-4xl active:scale-125"
+            className="text-blue-700 text-2xl md:text-5xl active:scale-125"
             onClick={() => setGameVersion("blue")}
           />
         </div>
-        <h3>
-          {gameVersion === "red"
-            ? version[0].flavor_text
-            : version[1].flavor_text}
-        </h3>
-
-        <p>
-          {" "}
-          <span className="text-xs">Base Happiness: </span>
-          {data.base_happiness}
-        </p>
-        <p>
-          <span className="text-xs">Capture Rate: </span>
-          {data.capture_rate}%
-        </p>
-        <p>
-          <span className="text-xs">Color: </span>
-          {data.color.name}
-        </p>
-        <p>
-          Egg Groups: {data.egg_groups.map((egg: any) => egg.name).join(", ")}
-        </p>
-        <p>
-          Evolves from:{" "}
-          {data.evolves_from_species?.name.length > 0
-            ? data.evolves_from_species.name
-            : "n/a"}
-        </p>
+        <section className="w-full h-full text-[10px] md:text-base p-2 overflow-auto bg-slate-200 bg-opacity-50 dark:bg-slate-900">
+          <p className="text-[10px] pl-1 md:text-base">
+            {gameVersion === "red"
+              ? version[0].flavor_text
+              : version[1].flavor_text}
+          </p>
+          <p>
+            <span className="text-blue-700 dark:text-yellow-300">
+              Generation:{" "}
+            </span>
+            {data.generation.name}
+          </p>
+          <p>
+            {" "}
+            <span className="text-blue-700 dark:text-yellow-300">
+              Base Happiness:{" "}
+            </span>
+            {data.base_happiness}
+          </p>
+          <p>
+            <span className="text-blue-700 dark:text-yellow-300">
+              Capture Rate:{" "}
+            </span>
+            {data.capture_rate}%
+          </p>
+          <p>
+            <span className="text-blue-700 dark:text-yellow-300">Color: </span>
+            {data.color.name}
+          </p>
+          <p>
+            <span className="text-blue-700 dark:text-yellow-300">
+              Egg Groups:
+            </span>{" "}
+            {data.egg_groups.map((egg: any) => egg.name).join(", ")}
+          </p>
+          <p>
+            <span className="text-blue-700 dark:text-yellow-300">
+              {" "}
+              Evolves from:{" "}
+            </span>
+            {data.evolves_from_species?.name.length > 0
+              ? data.evolves_from_species.name
+              : "n/a"}
+          </p>
+          <p>
+            <span className="text-blue-700 dark:text-yellow-300">
+              Habitat:{" "}
+            </span>
+            {data.habitat ? data.habitat.name : "n/a"}
+          </p>
+        </section>
       </div>
     );
   }

@@ -3,7 +3,7 @@ export function setTypeColor(type: string) {
     let typeColor = "";
     switch (type) {
       case "normal":
-        typeColor = "bg-amber-500";
+        typeColor = "bg-amber-500 dark:text-black";
         break;
       case "fire":
         typeColor = "bg-red-600";

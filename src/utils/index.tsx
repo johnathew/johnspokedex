@@ -1,5 +1,3 @@
-import { PokeColumn } from "@/pages/SearchPokedex/columns";
-
 export async function fetchPokemon({
   id,
 }: {
@@ -58,17 +56,3 @@ const FetchData = async () => {
   }
 };
 export default FetchData;
-// const fetchAllPokemonInfo = async () => {
-//   const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=130000`);
-
-//   const { results } = await res.json();
-
-//   const response = await Promise.all(
-//     results.map(async (pokemon: any) => {
-//       const res = await fetch(pokemon.url);
-//       return res.json();
-//     })
-//   );
-
-//   return response;
-// };

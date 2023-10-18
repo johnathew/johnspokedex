@@ -65,7 +65,7 @@ export interface SpeciesInfoTypes {
   genera:                 Genus[];
   generation:             Color;
   growth_rate:            Color;
-  habitat:                Color;
+  habitat:                Color | null;
   has_gender_differences: boolean;
   hatch_counter:          number;
   id:                     number;
