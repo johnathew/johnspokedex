@@ -40,7 +40,7 @@ const PokeSpeciesInfo = () => {
   if (data) {
     const version = findFlavorText(data.flavor_text_entries);
     content = (
-      <div className="w-2/3 md:w-1/2  h-1/4 flex flex-col items-center p-1 text-black dark:text-slate-200  bg-slate-200 dark:bg-slate-900 bg-opacity-50 rounded-md border-2 border-black dark:border-yellow-500 shadow-md">
+      <div className="w-2/3 md:w-1/2 h-1/3 flex flex-col items-center p-1 text-black dark:text-slate-200  bg-slate-200 dark:bg-slate-900 bg-opacity-50 rounded-md border-2 border-black dark:border-yellow-500 shadow-md">
         <div className="flex w-full rounded-md h-auto p-1 bg-slate-950 bg-opacity-10 dark:bg-opacity-50 justify-start items-center border-b-2 border-double border-black dark:border-yellow-500">
           <MdOutlineCatchingPokemon
             className="text-red-700 text-2xl md:text-4xl active:scale-125"
@@ -51,8 +51,8 @@ const PokeSpeciesInfo = () => {
             onClick={() => setGameVersion("blue")}
           />
         </div>
-        <section className="w-full h-full text-[10px] md:text-base p-2 overflow-auto bg-slate-200 bg-opacity-50 dark:bg-slate-900">
-          <p className="text-[10px] pl-1 md:text-base">
+        <section className="w-full h-full text-xs md:text-base p-2 overflow-auto bg-slate-200 bg-opacity-50 dark:bg-slate-900">
+          <p className="text-[11px] pl-1 md:text-base mb-4">
             {gameVersion === "red"
               ? version[0].flavor_text
               : version[1].flavor_text}
