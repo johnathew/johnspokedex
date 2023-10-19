@@ -5,7 +5,7 @@ import { AiFillQuestionCircle } from "react-icons/ai";
 
 const Details = ({ data }: { data: IPokemon }) => {
   return (
-    <div className="dark:text-white flex-shrink-0 w-screen md:w-full h-auto pt-2 text-black flex justify-center items-center flex-col">
+    <div className="dark:text-white flex-shrink-0 w-auto md:w-full h-auto pt-2 text-black flex justify-center items-center flex-col">
       <div className="flex w-full h-auto  md:w-full justify-center  dark:bg-slate-900 items-center bg-slate-200 rounded-md shadow-lg border-[2px] border-black bg-opacity-50 dark:border-yellow-300">
         <section
           className="flex flex-col w-auto text-center text-xs md:text-xl"
@@ -61,7 +61,7 @@ const Details = ({ data }: { data: IPokemon }) => {
           </ul>
         </section>
       </div>
-      <div className="w-3/4 p-2 rounded-md text-slate-200 md:w-1/2">
+      <div className="w-full p-2 rounded-md text-slate-200">
         <section className="flex items-center flex-col text-xs" id="types">
           <label className="md:text-xl dark:text-yellow-300 underline md:underline-offset-4 underline-offset-2">
             {data.types?.length! > 1 ? "Types" : "Type"}{" "}
@@ -80,16 +80,16 @@ const Details = ({ data }: { data: IPokemon }) => {
           </ul>
         </section>
         <section
-          className="flex items-center justify-center flex-col text-xs"
+          className="flex items-center justify-center flex-col text-xs w-full"
           id="abilities"
         >
           <label className="md:text-xl  dark:text-yellow-300 underline md:underline-offset-4 underline-offset-2">
             Abilities
           </label>
-          <ul className="flex gap-2 w-full justify-center">
+          <ul className="flex gap-2 justify-center">
             {data.abilities.map((ability: any) => (
               <li
-                className="px-2 md:text-sm text-xs justify-start rounded-md items-center flex mt-2 border-slate-200"
+                className="px-2  md:text-sm text-xs justify-start rounded-md items-center flex mt-2 border-slate-200"
                 key={ability.ability.name}
               >
                 {ability.ability.name}{" "}

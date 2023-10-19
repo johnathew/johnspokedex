@@ -11,15 +11,14 @@ import { memo } from "react";
 const allPokemonQuery = () => ({
   queryKey: ["allPokemon"],
   queryFn: async ({ signal }: { signal: AbortSignal }) =>
-   await fetchAllPokemon({ signal }),
-
+    fetchAllPokemon({ signal }),
+    Suspense: true,
 });
 
 export function loader() {
   const query = allPokemonQuery();
   return defer({
-    query:
-      queryClient.ensureQueryData(query)
+    query: queryClient.ensureQueryData(query),
   });
 }
 

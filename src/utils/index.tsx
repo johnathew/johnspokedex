@@ -20,9 +20,22 @@ export async function fetchPokemon({
   return data;
 }
 
-export async function fetchPokemonSpecies(pokeName: string | number) {
+export async function fetchPokemonSpecies(pokeID: string | number) {
   const res = await fetch(
-    `https://pokeapi.co/api/v2/pokemon-species/${pokeName}`
+    `https://pokeapi.co/api/v2/pokemon-species/${pokeID}`
+  );
+
+  if (!res.ok) {
+    const error = new Error("An error occurred while fetching the data");
+    throw error;
+  }
+  const data = await res.json();
+  return data;
+}
+
+export async function fetchPokemonLocations(pokeID: string | number) {
+  const res = await fetch(
+    `https://pokeapi.co/api/v2/pokemon/${pokeID}/encounters`
   );
 
   if (!res.ok) {

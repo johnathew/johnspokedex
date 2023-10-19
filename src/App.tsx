@@ -5,7 +5,9 @@ import PokemonDetails, {
 } from "./pages/Pokemon/PokemonDetails";
 import Layout from "./components/Layout";
 import About from "./pages/About";
-import PokeLocation from "./pages/Pokemon/PokeLocation";
+import PokeLocation, {
+  loader as locationLoader,
+} from "./pages/Pokemon/PokeLocation";
 import PokeSpeciesInfo, {
   loader as speciesLoader,
 } from "./pages/Pokemon/PokeSpeciesInfo";
@@ -66,6 +68,8 @@ const router = createBrowserRouter([
           {
             path: "locations",
             element: <PokeLocation />,
+            loader: locationLoader,
+            errorElement: <Error />,
           },
           {
             path: "forms",

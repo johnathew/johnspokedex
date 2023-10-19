@@ -15,7 +15,7 @@ export function setTypeColor(type: string) {
         typeColor = "bg-green-600";
         break;
       case "electric":
-        typeColor = "bg-yellow-500 dark:text-black";
+        typeColor = "bg-yellow-500 text-black dark:text-black";
         break;
       case "ice":
         typeColor = "bg-blue-400";
