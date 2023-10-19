@@ -31,7 +31,7 @@ const PokeLocation = () => {
 
   let slicedData = data?.slice(0, 2);
   let content = data ? (
-    <section className="text-xs md:text-base w-auto md:w-1/2 p-2 h-auto md:h-1/4 flex flex-col items-center text-black dark:text-slate-200  bg-slate-200 dark:bg-slate-900 bg-opacity-50 rounded-md border-2 border-black dark:border-yellow-500 shadow-md">
+    <section className="text-xs md:text-base w-2/3 md:w-1/2 p-2 h-1/4 flex flex-col items-center text-black dark:text-slate-200  bg-slate-200 dark:bg-slate-900 bg-opacity-50 rounded-md border-2 border-black dark:border-yellow-500 shadow-md flex-shrink-0 overflow-auto">
       {data.length === 0 ? (
         <div className=" w-full h-full text-[10px] md:text-base p-2 overflow-auto bg-slate-200 bg-opacity-50 dark:bg-slate-950 rounded-md flex items-center justify-center">
           <p className="flex flex-col items-center dark:text-yellow-500">
@@ -39,10 +39,10 @@ const PokeLocation = () => {
           </p>
         </div>
       ) : (
-        <ul className=" w-full h-full text-[10px] p-2 md:text-base overflow-auto bg-slate-200 bg-opacity-50 dark:bg-slate-950 rounded-md flex flex-col items-center justify-center">
+        <ul className="w-full h-full p-2  text-[10px] md:text-base bg-slate-200 bg-opacity-50 dark:bg-slate-950 rounded-md flex flex-col items-center justify-center">
           {slicedData?.map((area, i) => (
-            <div key={i} className="border-b-2 w-full">
-              <li>
+            <div key={i} className="border-b-2 w-full h-auto border-opacity-50 border-slate-200 dark:border-yellow-500 px-4 py-2 rounded-md">
+              <li className="">
                 <span className="text-blue-700 dark:text-yellow-300">
                   Game Version:{" "}
                 </span>
@@ -63,7 +63,7 @@ const PokeLocation = () => {
                 {area.version_details[i].encounter_details[i]?.method?.name ||
                   "None"}
               </li>
-              <li>
+              <li className="">
                 <span className="text-blue-700 dark:text-yellow-300">
                   Chance:
                 </span>{" "}
