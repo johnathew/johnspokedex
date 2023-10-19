@@ -39,7 +39,7 @@ const PokeLocation = () => {
           </p>
         </div>
       ) : (
-        <ul className=" w-full h-full text-[10px] md:text-base p-2 overflow-auto bg-slate-200 bg-opacity-50 dark:bg-slate-950 rounded-md flex flex-col items-start justify-center">
+        <ul className=" w-full h-full text-[10px] md:text-base p-4 overflow-auto bg-slate-200 bg-opacity-50 dark:bg-slate-950 rounded-md flex flex-col items-start justify-center">
           {slicedData?.map((area, i) => (
             <div key={i} className="border-b-2 w-full">
               <h1>
