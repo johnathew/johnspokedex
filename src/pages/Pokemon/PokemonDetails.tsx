@@ -1,10 +1,5 @@
-import {
-  Link,
-  useParams,
-  NavLink,
-  Outlet,
-} from "react-router-dom";
-import { fetchPokemon } from "@/utils";
+import { Link, useParams, NavLink, Outlet } from "react-router-dom";
+import { fetchPokemon, fetchPokemonAbility } from "@/utils";
 import { useQuery } from "@tanstack/react-query";
 import { Loading } from "../../components/Loading";
 import Details from "../../components/Details";

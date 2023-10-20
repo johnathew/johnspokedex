@@ -2,8 +2,29 @@ import { concatZeros } from "@/utils/concatZeros";
 import { setTypeColor } from "@/utils/setTypeColor";
 import { IPokemon } from "../../types/pokemonActionTypes";
 import { AiFillQuestionCircle } from "react-icons/ai";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
+import { useQueries } from "@tanstack/react-query";
+import { fetchPokemonAbility } from "@/utils";
 
 const Details = ({ data }: { data: IPokemon }) => {
+  const ability = data.abilities.map((ability) => ability.ability.name);
+
+
+  const abilityQueries = useQueries({
+   queries: ability.map((ability) => {
+    return {
+      queryKey: ["ability", ability],
+      queryFn: () => fetchPokemonAbility(ability),
+    };
+    }),
+  });
+
+  console.log(abilityQueries)
+
   return (
     <div className="dark:text-white flex-shrink-0 w-auto md:w-full h-auto pt-2 text-black flex justify-center items-center flex-col">
       <div className="flex w-full h-auto  md:w-full justify-center  dark:bg-slate-900 items-center bg-slate-200 rounded-md shadow-lg border-[2px] border-black bg-opacity-50 dark:border-yellow-300">
@@ -93,7 +114,19 @@ const Details = ({ data }: { data: IPokemon }) => {
                 key={ability.ability.name}
               >
                 {ability.ability.name}{" "}
-                <AiFillQuestionCircle className="ml-1 md:text-xl text-lg " />
+                <HoverCard>
+                  <HoverCardTrigger asChild>
+                    <button type="button">
+                      {" "}
+                      <AiFillQuestionCircle className="ml-1 md:text-xl text-lg " />
+                    </button>
+                  </HoverCardTrigger>
+                  <HoverCardContent className="w-80">
+                    <p className="text-xs md:text-sm">
+                      {ability.ability.name}{" "}
+                    </p>
+                  </HoverCardContent>
+                </HoverCard>
               </li>
             ))}
           </ul>

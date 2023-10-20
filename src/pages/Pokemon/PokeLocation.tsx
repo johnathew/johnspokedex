@@ -46,7 +46,7 @@ const PokeLocation = () => {
                 <span className="text-blue-700 dark:text-yellow-300">
                   Game Version:{" "}
                 </span>
-                {area.version_details[i].version.name}
+                {area.version_details[i]?.version.name}
               </li>
               <li>
                 {" "}
@@ -60,14 +60,14 @@ const PokeLocation = () => {
                   {" "}
                   Encounter Method:{" "}
                 </span>
-                {area.version_details[i].encounter_details[i]?.method?.name ||
+                {area.version_details[i]?.encounter_details[i]?.method?.name ||
                   "None"}
               </li>
               <li className="">
                 <span className="text-blue-700 dark:text-yellow-300">
                   Chance:
                 </span>{" "}
-                {area.version_details[i].encounter_details[i]?.chance || 0}%{" "}
+                {area.version_details[i]?.encounter_details[i]?.chance || 0}%{" "}
               </li>
             </div>
           ))}{" "}
