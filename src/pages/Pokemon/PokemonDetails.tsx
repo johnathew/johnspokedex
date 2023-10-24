@@ -37,7 +37,7 @@ const PokemonDetails = () => {
     <div className="h-full w-auto bg-sky-700 dark:bg-slate-800 flex flex-col justify-center items-center md:mt-0">
       <Link
         to="/pokedex"
-        className="hover:underline text-slate-200 text-[11px] font-semibold mt-2 md:mt-0"
+        className="hover:underline text-slate-200 text-[11px] font-semibold mt-5 md:mt-0"
         preventScrollReset={true}
         state={{ from: location.pathname }}
       >
@@ -45,7 +45,7 @@ const PokemonDetails = () => {
       </Link>
       <div>
         {content}
-        <nav className="flex space-x-10 items-center justify-center mb-4">
+        <nav className="flex space-x-10 items-center justify-center">
           <NavLink
             to="."
             end
