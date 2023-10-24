@@ -34,10 +34,10 @@ const PokemonDetails = () => {
   let content = data ? <Details data={data} /> : <Loading />;
 
   return (
-    <div className="h-full w-auto bg-sky-700 dark:bg-slate-800 flex flex-col justify-center items-center mt-3 md:mt-0">
+    <div className="h-full w-auto bg-sky-700 dark:bg-slate-800 flex flex-col justify-center items-center md:mt-0">
       <Link
         to="/pokedex"
-        className="hover:underline text-slate-200 text-[11px] font-semibold mt-2"
+        className="hover:underline text-slate-200 text-[11px] font-semibold mt-2 md:mt-0"
         preventScrollReset={true}
         state={{ from: location.pathname }}
       >

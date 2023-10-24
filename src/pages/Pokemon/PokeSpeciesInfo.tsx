@@ -40,19 +40,19 @@ const PokeSpeciesInfo = () => {
   if (data) {
     const version = findFlavorText(data.flavor_text_entries);
     content = (
-      <div className="w-2/3 md:w-1/2 h-1/3 flex flex-col items-center p-1 text-black dark:text-slate-200  bg-slate-200 dark:bg-slate-900 bg-opacity-50 rounded-md border-2 border-black dark:border-yellow-500 shadow-md">
-        <div className="flex w-full rounded-md h-auto p-1 bg-slate-950 bg-opacity-10 dark:bg-opacity-50 justify-start items-center border-b-2 border-double border-black dark:border-yellow-500">
+      <div className="w-3/4 md:w-1/2 h-auto md:h-1/3 flex flex-col mb-0 items-center p-1 m-2 text-black dark:text-slate-200  bg-slate-200 dark:bg-slate-900 bg-opacity-50 rounded-md border-2 border-black dark:border-yellow-500 shadow-md">
+        <div className="flex w-full rounded-md p-1 bg-slate-950 bg-opacity-10 dark:bg-opacity-50 justify-start items-center border-b-2 border-double border-black dark:border-yellow-500">
           <MdOutlineCatchingPokemon
-            className="text-red-700 text-2xl md:text-4xl active:scale-125"
+            className="text-red-700 text-2xl md:text-3xl active:scale-125"
             onClick={() => setGameVersion("red")}
           />
           <MdOutlineCatchingPokemon
-            className="text-blue-700 text-2xl md:text-4xl active:scale-125"
+            className="text-blue-700 text-2xl md:text-3xl active:scale-125"
             onClick={() => setGameVersion("blue")}
           />
         </div>
         <section className="w-full h-full text-xs md:text-base p-2 overflow-auto bg-slate-200 bg-opacity-50 dark:bg-slate-900">
-          <p className="text-[11px] pl-1 md:text-base mb-4">
+          <p className="text-[12px] pl-1 md:text-base mb-2 border-b-2 border-black border-opacity-50 dark:border-yellow-500 rounded-md dark:border-opacity-50">
             {gameVersion === "red"
               ? version[0].flavor_text
               : version[1].flavor_text}

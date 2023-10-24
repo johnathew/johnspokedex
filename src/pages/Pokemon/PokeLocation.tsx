@@ -31,7 +31,7 @@ const PokeLocation = () => {
 
   let slicedData = data?.slice(0, 2);
   let content = data ? (
-    <section className="text-xs md:text-base w-2/3 md:w-1/2 p-2 h-1/3 flex flex-col justify-center items-center text-black dark:text-slate-200  bg-slate-200 dark:bg-slate-900 bg-opacity-50 rounded-md border-2 border-black dark:border-yellow-500 shadow-md flex-shrink-0 overflow-auto">
+    <section className="text-xs md:text-base w-3/4 md:w-1/2 h-auto md:h-1/3 flex flex-col p-1 justify-center items-center text-black dark:text-slate-200  bg-slate-200 dark:bg-slate-900 bg-opacity-50 rounded-md border-2 border-black dark:border-yellow-500 shadow-md flex-shrink-0 overflow-auto">
       {data.length === 0 ? (
         <div className=" w-full h-full text-[10px] md:text-base p-2 overflow-auto bg-slate-200 bg-opacity-50 dark:bg-slate-950 rounded-md flex items-center justify-center">
           <p className="flex flex-col items-center dark:text-yellow-500">
@@ -39,9 +39,9 @@ const PokeLocation = () => {
           </p>
         </div>
       ) : (
-        <ul className="w-full h-full p-4 text-xs md:text-base bg-slate-200 bg-opacity-50 dark:bg-slate-950 rounded-md flex flex-col items-center justify-center ">
+        <ul className="w-full h-full p-3 text-xs md:text-base bg-slate-200 bg-opacity-50 dark:bg-slate-950 rounded-md flex flex-col items-center justify-center ">
           {slicedData?.map((area, i) => (
-            <div key={i} className="border-b-2 mb-4 w-full h-auto border-opacity-50 border-slate-200 dark:border-yellow-500 rounded-md">
+            <div key={i} className="border-b-2 mb-4 w-full h-auto border-opacity-50 border-black dark:border-yellow-500 rounded-md dark:border-opacity-50">
               <li className="">
                 <span className="text-blue-700 dark:text-yellow-300">
                   Game Version:{" "}

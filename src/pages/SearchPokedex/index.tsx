@@ -2,23 +2,24 @@ import { fetchAllPokemon } from "@/utils/fetchAllPokemon";
 import { DataTable } from "./data-table";
 import { columns } from "./columns";
 import { defer, Await, useLoaderData } from "react-router-dom";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import Fallback from "@/components/Fallback";
 import { queryClient } from "@/App";
 import { PokeState } from "@/types/pokemonActionTypes";
 import { memo } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 const allPokemonQuery = () => ({
   queryKey: ["allPokemon"],
   queryFn: async ({ signal }: { signal: AbortSignal }) =>
-    fetchAllPokemon({ signal }),
-    Suspense: true,
+    await fetchAllPokemon({ signal }),
+  Suspense: true,
 });
 
 export function loader() {
   const query = allPokemonQuery();
   return defer({
-    query: queryClient.ensureQueryData(query),
+    query: queryClient.fetchQuery(query),
   });
 }
 
