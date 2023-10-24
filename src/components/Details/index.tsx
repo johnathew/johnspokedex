@@ -22,6 +22,12 @@ const Details = ({ data }: { data: IPokemon }) => {
     }),
   });
 
+  const abilityArray = abilityQueries.map((ability) => ability.data);
+
+  const enAbilities = abilityArray.map((ability) => {
+    return { ...ability, effect_entries: ability?.effect_entries[1] };
+  });
+
   return (
     <div className="dark:text-white flex-shrink-0 w-auto md:w-full h-auto pt-2 text-black flex justify-center items-center flex-col mb-5">
       <div className="flex w-full h-auto md:w-full justify-center  dark:bg-slate-900 items-center bg-slate-200 rounded-md shadow-lg border-[2px] border-black bg-opacity-50 dark:border-yellow-300">
@@ -81,7 +87,7 @@ const Details = ({ data }: { data: IPokemon }) => {
       </div>
       <div className="w-full rounded-md text-slate-200 flex justify-center items-center pt-2">
         <section
-          className="flex items-center justify-center flex-col text-xs md:w-1/4"
+          className="flex items-center justify-center flex-col text-xs md:w-full"
           id="types"
         >
           <label className="md:text-base dark:text-yellow-300 underline md:underline-offset-4 underline-offset-2">
@@ -108,9 +114,9 @@ const Details = ({ data }: { data: IPokemon }) => {
             Abilities
           </label>
           <ul className="flex justify-center items-center ">
-            {data.abilities.map((ability: any) => (
+            {data.abilities.map((ability: any, i) => (
               <li
-                className="px-2 md:text-sm text-xs justify-start rounded-md items-center flex mt-2 border-slate-200"
+                className="px-2 md:text-sm text-xs justify-start rounded-md items-center flex border-slate-200"
                 key={ability.ability.name}
               >
                 {ability.ability.name}{" "}
@@ -121,10 +127,13 @@ const Details = ({ data }: { data: IPokemon }) => {
                       <AiFillQuestionCircle className="md:text-xl text-lg m-1 " />
                     </button>
                   </HoverCardTrigger>
-                  <HoverCardContent className="w-80">
-                    <p className="text-xs md:text-sm">
-                      {ability.ability.name}{" "}
-                    </p>
+                  <HoverCardContent className="w-80 max-h-64 bg-slate-300  overflow-y-auto" >
+                    <div className="text-xs md:text-sm w-full">
+                      <span className="dark:text-yellow-300 font-bold">
+                        {ability.ability.name}
+                      </span>
+                      {": "} {enAbilities[i].effect_entries?.effect}
+                    </div>
                   </HoverCardContent>
                 </HoverCard>
               </li>

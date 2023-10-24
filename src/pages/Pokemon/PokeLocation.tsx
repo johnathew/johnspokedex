@@ -28,6 +28,7 @@ const PokeLocation = () => {
   const { data } = useQuery(locationQuery(params.id!)) as UseQueryResult<
     SpeciesInfoTypes[]
   >;
+  
 
   let slicedData = data?.slice(0, 2);
   let content = data ? (
