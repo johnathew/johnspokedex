@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider, createBrowserRouter, createHashRouter } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import PokemonDetails, {
   loader as pokemonLoader,
@@ -29,7 +29,7 @@ export const queryClient = new QueryClient({
   },
 });
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <Layout />,
