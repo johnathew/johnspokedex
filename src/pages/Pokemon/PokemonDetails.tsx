@@ -49,24 +49,17 @@ const PokemonDetails = () => {
           <NavLink
             to="."
             end
-            className="hover:underline"
+            className="hover:underline text-slate-200 text-opacity-80"
             style={({ isActive }) => (isActive ? activeStyles : undefined)}
           >
             Species
           </NavLink>
           <NavLink
             to="./locations"
-            className="hover:underline"
+            className="hover:underline text-slate-200 text-opacity-80"
             style={({ isActive }) => (isActive ? activeStyles : undefined)}
           >
             Locations
-          </NavLink>
-          <NavLink
-            to="./forms"
-            className="hover:underline"
-            style={({ isActive }) => (isActive ? activeStyles : undefined)}
-          >
-            Forms
           </NavLink>
         </nav>
       </div>

@@ -1,4 +1,7 @@
-import { RouterProvider, createBrowserRouter, createHashRouter } from "react-router-dom";
+import {
+  RouterProvider,
+  createHashRouter,
+} from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import PokemonDetails, {
   loader as pokemonLoader,
@@ -11,7 +14,6 @@ import PokeLocation, {
 import PokeSpeciesInfo, {
   loader as speciesLoader,
 } from "./pages/Pokemon/PokeSpeciesInfo";
-import PokeForms from "./pages/Pokemon/PokeForms";
 import NotFound from "./pages/NotFound";
 import Error from "./components/Error";
 import Pokemon from "./pages/Pokemon";
@@ -71,10 +73,6 @@ const router = createHashRouter([
             loader: locationLoader,
             errorElement: <Error />,
           },
-          {
-            path: "forms",
-            element: <PokeForms />,
-          },
         ],
       },
       {
@@ -96,9 +94,6 @@ function App() {
 
 export default App;
 
-//todo: style details page, pokedex table,
-// add more info to details page
-// style about me page
+//todo: about page
 // add option to view paginated pokedex table
 // add search by type
-// add hover to question mark to show ability description https://pokeapi.co/api/v2/ability/NAME

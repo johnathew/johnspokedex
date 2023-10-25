@@ -61,7 +61,7 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="rounded-md shrink-0 border-black mb-0 o relative pb-2 mx-auto bg-sky-700 dark:bg-slate-900 w-full h-auto drop-shadow-lg">
+    <div className="rounded-md shrink-0 border-black mb-0 relative pb-2 mx-auto bg-sky-700 dark:bg-slate-900 w-full h-auto drop-shadow-lg">
       <div className="flex items-center justify-center w-auto py-4">
         <DebouncedInput
           placeholder="Find Pokemon..."
@@ -77,7 +77,7 @@ export function DataTable<TData, TValue>({
           Search via pokedex number or name
         </Label>
       </div>
-      <Table className="md:w-3/4 mx-auto">
+      <Table className="md:w-3/5 mx-auto">
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
@@ -106,13 +106,13 @@ export function DataTable<TData, TValue>({
               id={id[i].id}
               ref={rowRef}
               data-state={row.getIsSelected() && "selected"}
-              className="text-center w-auto md:text-sm text-xs hover:border-yellow-500 hover:border-[1px] hover:text-black dark:hover:text-yellow-400 hover:bg-slate-900 hover:bg-opacity-50"
+              className="text-center w-auto md:text-sm text-xs tracking-wide hover:border-yellow-500 hover:border-[1px] hover:text-black dark:hover:text-yellow-400 hover:bg-slate-900 hover:bg-opacity-50 dark:hover:bg-slate-200 dark:hover:bg-opacity-50"
             >
               {row.getVisibleCells().map((cell) => (
                 <TableCell
                   key={cell.id}
                   id={cell.id}
-                  className="pb-2 dark:bg-slate-700 text-slate-200  "
+                  className="pb-2 w-auto  text-slate-200  "
                 >
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </TableCell>

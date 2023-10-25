@@ -38,8 +38,8 @@ export const columns: ColumnDef<IPokemon>[] = [
       );
     },
     cell: ({ row }) => {
-      const id = row.original.id;
-      return concatZeros(id);
+      const id = concatZeros(row.original.id);
+      return <div className="w-2 mx-auto">{id}</div>;
     },
   },
   {
@@ -52,12 +52,12 @@ export const columns: ColumnDef<IPokemon>[] = [
         <Link
           to={`/pokedex/${name}`}
           preventScrollReset={true}
-          className="flex items-center justify-center"
+          className="flex items-center justify-center w-full"
         >
           <img
             src={sprite}
             alt={name}
-            className="md:w-14 w-12 md:mr-2 h-auto"
+            className="md:w-14 w-10 md:mr-2 h-auto"
           />
           <p className="text-left md:ml-2">
             {name.charAt(0).toUpperCase() + name.slice(1)}

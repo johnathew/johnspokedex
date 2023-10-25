@@ -2,12 +2,12 @@ import { fetchAllPokemon } from "@/utils/fetchAllPokemon";
 import { DataTable } from "./data-table";
 import { columns } from "./columns";
 import { defer, Await, useLoaderData } from "react-router-dom";
-import { Suspense, useState } from "react";
+import { Suspense } from "react";
 import Fallback from "@/components/Fallback";
 import { queryClient } from "@/App";
 import { PokeState } from "@/types/pokemonActionTypes";
 import { memo } from "react";
-import { useQuery } from "@tanstack/react-query";
+
 
 const allPokemonQuery = () => ({
   queryKey: ["allPokemon"],
