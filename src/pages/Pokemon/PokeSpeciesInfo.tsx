@@ -6,10 +6,14 @@ import { UseQueryResult, useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { MdOutlineCatchingPokemon } from "react-icons/md";
+import { TbPokeballOff } from "react-icons/tb";
+import { Loading } from "@/components/Loading";
 
 const speciesInfoQuery = (id: number | string) => ({
   queryKey: ["speciesInfo", id],
   queryFn: async () => fetchPokemonSpecies(id),
+  staleTime: 1000 * 60 * 60 * 24,
+  gcTime: Infinity,
 });
 
 export function loader() {
@@ -31,12 +35,24 @@ const PokeSpeciesInfo = () => {
 
   const [gameVersion, setGameVersion] = useState("red");
 
-  const { data } = useQuery(
+  const { data, status } = useQuery(
     speciesInfoQuery(pokemonName.id!)
   ) as UseQueryResult<SpeciesInfoTypes>;
 
   let content = null;
 
+  if (status === "pending") {
+    return (
+      <section className="text-xs md:text-base w-3/4 md:w-1/3 h-1/3 md:h-1/3 flex flex-col p-1 justify-center items-center text-black dark:text-slate-200  bg-slate-200 dark:bg-slate-900 bg-opacity-50 rounded-md border-2 border-black dark:border-yellow-500 shadow-md flex-shrink-0 overflow-auto">
+        <div className=" w-full h-full text-[10px] md:text-base p-2 overflow-auto bg-slate-200 bg-opacity-50 dark:bg-slate-950 rounded-md flex items-center justify-center">
+          <p className="flex flex-col items-center dark:text-yellow-500">
+            No information found {":("} <TbPokeballOff className="text-4xl" />
+          </p>
+        </div>
+      </section>
+    );
+  }
+  
   if (data) {
     const version = findFlavorText(data.flavor_text_entries);
     content = (
@@ -105,6 +121,7 @@ const PokeSpeciesInfo = () => {
       </div>
     );
   }
+
   return <>{content}</>;
 };
 export default PokeSpeciesInfo;

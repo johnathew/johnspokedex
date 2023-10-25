@@ -30,7 +30,7 @@ const Details = ({ data }: { data: IPokemon }) => {
 
   return (
     <div className="dark:text-white flex-shrink-0 w-auto md:w-full h-auto pt-2 text-black flex justify-center items-center flex-col mb-5">
-      <div className="flex w-full h-auto md:w-full justify-center  dark:bg-slate-900 items-center bg-slate-200 rounded-md shadow-lg border-[2px] border-black bg-opacity-50 dark:border-yellow-300">
+      <div className="flex max-w-fit h-auto md:w-full justify-center  dark:bg-slate-900 items-center bg-slate-200 rounded-md shadow-lg border-[2px] border-black bg-opacity-50 dark:border-yellow-300">
         <section
           className="flex flex-col w-auto text-center text-xs md:text-xl"
           id="pokemonImage"
@@ -38,7 +38,7 @@ const Details = ({ data }: { data: IPokemon }) => {
           <img
             src={data.sprites.other["official-artwork"].front_default}
             alt={data.name}
-            className="md:w-56 w-40 h-40 md:h-auto"
+            className="md:w-56 w-36 h-auto md:h-auto"
           />
           <p>
             {" "}
@@ -85,7 +85,7 @@ const Details = ({ data }: { data: IPokemon }) => {
           </ul>
         </section>
       </div>
-      <div className="w-full rounded-md text-slate-200 flex justify-center items-center pt-2">
+      <div className="w-4/5 rounded-md text-slate-200 flex justify-center items-center pt-2">
         <section
           className="flex items-center justify-center flex-col text-xs md:w-full"
           id="types"
@@ -97,7 +97,7 @@ const Details = ({ data }: { data: IPokemon }) => {
             {data.types?.map((type: any) => (
               <li
                 key={type.type.name}
-                className={`px-2 border-[1px] text-xs md:text-sm m-1 rounded-md mt-2 border-slate-200 ${setTypeColor(
+                className={`px-2 border-[1px] text-[11px] md:text-sm m-1 rounded-md mt-2 border-slate-200 ${setTypeColor(
                   type.type.name
                 )}`}
               >
@@ -107,16 +107,16 @@ const Details = ({ data }: { data: IPokemon }) => {
           </ul>
         </section>
         <section
-          className="flex items-center justify-center flex-col text-xs md:w-3/4 h-auto ml-10"
+          className="flex items-center justify-center flex-col text-xs md:w-3/4 h-auto md:ml-10"
           id="abilities"
         >
           <label className="md:text-base dark:text-yellow-300 underline md:underline-offset-4 underline-offset-2">
             Abilities
           </label>
-          <ul className="flex justify-center items-center ">
+          <ul className="flex justify-center items-center">
             {data.abilities.map((ability: any, i) => (
               <li
-                className="px-2 md:text-sm text-xs justify-start rounded-md items-center flex border-slate-200"
+                className=" md:text-sm text-[11px] justify-start tracking-tight md:tracking-normal rounded-md items-center flex border-slate-200"
                 key={ability.ability.name}
               >
                 {ability.ability.name}{" "}
@@ -127,7 +127,7 @@ const Details = ({ data }: { data: IPokemon }) => {
                       <AiFillQuestionCircle className="md:text-xl text-lg m-1 " />
                     </button>
                   </HoverCardTrigger>
-                  <HoverCardContent className="w-80 max-h-64 bg-slate-300  overflow-y-auto" >
+                  <HoverCardContent className="w-80 max-h-64 bg-slate-300  overflow-y-auto">
                     <div className="text-xs md:text-sm w-full">
                       <span className="dark:text-yellow-300 font-bold">
                         {ability.ability.name}
