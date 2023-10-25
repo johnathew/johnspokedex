@@ -97,3 +97,7 @@ export default App;
 //todo: about page
 // add option to view paginated pokedex table
 // add search by type
+// add blank species info page when no data is found
+// add scroll to top/ middle/ bottom button
+// make species and location info boxes same size on mobile
+

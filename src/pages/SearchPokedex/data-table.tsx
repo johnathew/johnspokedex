@@ -16,7 +16,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import React, { useRef } from "react";
+import React, { memo, useRef } from "react";
 import DebouncedInput, { Input } from "@/components/ui/input";
 import { Label } from "@radix-ui/react-label";
 
@@ -125,4 +125,4 @@ export function DataTable<TData, TValue>({
   );
 }
 
-export default DataTable;
+export default memo(DataTable);
