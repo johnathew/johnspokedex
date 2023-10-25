@@ -35,14 +35,21 @@ const PokeSpeciesInfo = () => {
 
   const [gameVersion, setGameVersion] = useState("red");
 
-  const { data, status } = useQuery(
+  const { data, status, isError, isStale } = useQuery(
     speciesInfoQuery(pokemonName.id!)
   ) as UseQueryResult<SpeciesInfoTypes>;
 
   let content = null;
 
   if (status === "pending") {
-    return (
+    content = (
+      <section className="text-xs md:text-base w-3/4 md:w-1/3 h-1/3 md:h-1/3 flex flex-col p-1 justify-center items-center text-black dark:text-slate-200  bg-slate-200 dark:bg-slate-900 bg-opacity-50 rounded-md border-2 border-black dark:border-yellow-500 shadow-md flex-shrink-0 overflow-auto">
+        <Loading />
+      </section>
+    );
+  }
+  if (isError || isStale) {
+    content = (
       <section className="text-xs md:text-base w-3/4 md:w-1/3 h-1/3 md:h-1/3 flex flex-col p-1 justify-center items-center text-black dark:text-slate-200  bg-slate-200 dark:bg-slate-900 bg-opacity-50 rounded-md border-2 border-black dark:border-yellow-500 shadow-md flex-shrink-0 overflow-auto">
         <div className=" w-full h-full text-[10px] md:text-base p-2 overflow-auto bg-slate-200 bg-opacity-50 dark:bg-slate-950 rounded-md flex items-center justify-center">
           <p className="flex flex-col items-center dark:text-yellow-500">
@@ -52,7 +59,7 @@ const PokeSpeciesInfo = () => {
       </section>
     );
   }
-  
+
   if (data) {
     const version = findFlavorText(data.flavor_text_entries);
     content = (

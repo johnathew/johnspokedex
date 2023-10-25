@@ -25,8 +25,15 @@ const Details = ({ data }: { data: IPokemon }) => {
   const abilityArray = abilityQueries.map((ability) => ability.data);
 
   const enAbilities = abilityArray.map((ability) => {
-    return { ...ability, effect_entries: ability?.effect_entries[1] };
+    return {
+      ...ability,
+      effect_entries: ability?.effect_entries.find(
+        (entry: any) => entry.language.name === "en"
+      ),
+    };
   });
+
+  console.log(enAbilities);
 
   return (
     <div className="dark:text-white flex-shrink-0 w-auto md:w-full h-auto pt-2 text-black flex justify-center items-center flex-col mb-5">
@@ -85,9 +92,9 @@ const Details = ({ data }: { data: IPokemon }) => {
           </ul>
         </section>
       </div>
-      <div className="w-4/5 rounded-md text-slate-200 flex justify-center items-center pt-2">
+      <div className="w-screen md:w-[150%] rounded-md text-slate-200 flex justify-evenly items-center pt-2">
         <section
-          className="flex items-center justify-center flex-col text-xs md:w-full"
+          className="flex items-center justify-center flex-col text-xs md:w-auto"
           id="types"
         >
           <label className="md:text-base dark:text-yellow-300 underline md:underline-offset-4 underline-offset-2">
@@ -107,7 +114,7 @@ const Details = ({ data }: { data: IPokemon }) => {
           </ul>
         </section>
         <section
-          className="flex items-center justify-center flex-col text-xs md:w-3/4 h-auto md:ml-10"
+          className="flex items-center justify-center flex-col text-xs md:w-auto h-auto"
           id="abilities"
         >
           <label className="md:text-base dark:text-yellow-300 underline md:underline-offset-4 underline-offset-2">
@@ -116,7 +123,7 @@ const Details = ({ data }: { data: IPokemon }) => {
           <ul className="flex justify-center items-center">
             {data.abilities.map((ability: any, i) => (
               <li
-                className=" md:text-sm text-[11px] justify-start tracking-tight md:tracking-normal rounded-md items-center flex border-slate-200"
+                className="md:text-base md:mx-2 text-[11px] justify-start tracking-tight md:tracking-normal rounded-md items-center flex border-slate-200"
                 key={ability.ability.name}
               >
                 {ability.ability.name}{" "}
@@ -132,7 +139,10 @@ const Details = ({ data }: { data: IPokemon }) => {
                       <span className="dark:text-yellow-300 font-bold">
                         {ability.ability.name}
                       </span>
-                      {": "} {enAbilities[i].effect_entries?.effect}
+                      {": "}{" "}
+                      {enAbilities[i].effect_entries?.effect
+                        ? enAbilities[i].effect_entries?.effect
+                        : "Ability information not found"}
                     </div>
                   </HoverCardContent>
                 </HoverCard>
