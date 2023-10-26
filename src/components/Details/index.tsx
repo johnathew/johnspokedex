@@ -33,8 +33,6 @@ const Details = ({ data }: { data: IPokemon }) => {
     };
   });
 
-  console.log(enAbilities);
-
   return (
     <div className="dark:text-white flex-shrink-0 w-auto md:w-full h-auto pt-2 text-black flex justify-center items-center flex-col mb-5">
       <div className="flex max-w-fit h-auto md:w-full justify-center  dark:bg-slate-900 items-center bg-slate-200 rounded-md shadow-lg border-[2px] border-black bg-opacity-50 dark:border-yellow-300">
@@ -92,7 +90,7 @@ const Details = ({ data }: { data: IPokemon }) => {
           </ul>
         </section>
       </div>
-      <div className="w-screen md:w-[150%] rounded-md text-slate-200 flex justify-evenly items-center pt-2">
+      <div className="w-screen md:w-[150%] rounded-md text-slate-200 flex justify-center md:gap-8 gap-2 items-center pt-2">
         <section
           className="flex items-center justify-center flex-col text-xs md:w-auto"
           id="types"

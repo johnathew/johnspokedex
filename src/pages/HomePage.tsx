@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import pokeGif from "../assets/pokeGif.gif";
 import pokemonLogo from "../assets/pokemonLogo.png";
-
+import {MdArrowForward} from 'react-icons/md'
 function HomePage() {
   return (
     <main className="text-black dark:text-slate-200 flex flex-col mb-auto items-center  justify-center h-full w-full my-auto bg-sky-700 dark:bg-slate-800">
@@ -14,10 +14,11 @@ function HomePage() {
         <h1 className="md:text-xl text-xs text-yellow-400 ">
           Welcome to John's Pokedex
         </h1>
-        <Link to="/pokedex">
-          <h1 className="text-base mt-4 h-10 animate-pulse hover:animate-none hover:underline flex flex-col ">
+        <Link to="/pokedex" className="flex items-center animate-pulse hover:animate-none hover:underline group">
+          <h1 className="text-base text-slate-200 mt-4 h-10  group-hover:underline ">
             Press start
           </h1>
+          <MdArrowForward className="md:text-2xl text-slate-200 group-hover:underline" />
         </Link>
         <img src={pokeGif} alt="pokemon gif" className="w-1/4 h-auto mb-0" />
       </section>

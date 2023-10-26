@@ -1,10 +1,8 @@
-import React from "react";
-import { TbPokeball } from "react-icons/tb";
-
+import { GiPokecog } from "react-icons/gi";
 export const Loading = () => {
   return (
-    <>
-      <TbPokeball className="md:text-7xl text-xl  text-yellow-500 animate-spin " />
-    </>
+    <div className="h-auto w-auto flex justify-center items-center">
+      <GiPokecog className="md:text-5xl text-xl  text-yellow-500 animate-spin " />
+    </div>
   );
 };

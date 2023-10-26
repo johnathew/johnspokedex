@@ -63,7 +63,7 @@ const PokeSpeciesInfo = () => {
   if (data) {
     const version = findFlavorText(data.flavor_text_entries);
     content = (
-      <div className="w-3/4 md:w-1/3 h-auto md:h-1/3 flex flex-col mb-0 items-center p-1 m-2 text-black dark:text-slate-200  bg-slate-200 dark:bg-slate-900 bg-opacity-50 rounded-md border-2 border-black dark:border-yellow-500 shadow-md">
+      <div className="w-3/4 md:w-1/2 lg:w-1/3 h-auto md:h-1/3 flex flex-col mb-0 items-center p-1 text-black dark:text-slate-200  bg-slate-200 dark:bg-slate-900 bg-opacity-50 rounded-md border-2 border-black dark:border-yellow-500 shadow-md">
         <div className="flex w-full rounded-md p-1 bg-slate-950 bg-opacity-10 dark:bg-opacity-50 justify-start items-center border-b-2 border-double border-black dark:border-yellow-500">
           <MdOutlineCatchingPokemon
             className="text-red-700 text-2xl md:text-3xl active:scale-125"

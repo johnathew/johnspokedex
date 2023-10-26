@@ -98,5 +98,8 @@ export default App;
 // add option to view paginated pokedex table
 // add search by type
 // add scroll to top/ middle/ bottom button
-// prevent other languages from version const in abilities section
-
+// add evolves into link
+// fix no info found for species info when loading
+//style location info more, looks wonky when only one location is visible
+// fix margins/padding in species and locations info
+// hover button error when clicking abilities on mobile
