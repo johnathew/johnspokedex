@@ -99,7 +99,6 @@ export default App;
 // add search by type
 // add scroll to top/ middle/ bottom button
 // add evolves into link
-// fix no info found for species info when loading
 //style location info more, looks wonky when only one location is visible
 // fix margins/padding in species and locations info
 // hover button error when clicking abilities on mobile

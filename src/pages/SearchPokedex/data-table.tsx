@@ -19,6 +19,7 @@ import {
 import React, { memo, useRef } from "react";
 import DebouncedInput, { Input } from "@/components/ui/input";
 import { Label } from "@radix-ui/react-label";
+import ScrollButton from "@/utils/scrollTopButton";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];

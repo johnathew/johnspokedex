@@ -11,7 +11,7 @@ interface IHeader {
 const Header = ({ toggleDarkMode, darkMode }: IHeader) => {
   const activeLink = "text-yellow-500 font-bold underline";
   return (
-    <header className="navbar w-full mx-auto bg-sky-800 text-slate-200 -m-2  md:m-0 dark:bg-slate-900 z-10 top-0 rounded-b-md sticky shadow drop-shadow-xl">
+    <header className="navbar w-full mx-auto bg-sky-800 text-slate-200 -m-2  md:-mb-2 dark:bg-slate-900 z-10 top-0 rounded-b-md sticky shadow drop-shadow-xl">
       <div className="navbar-start">
         <div className="dropdown ">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -110,7 +110,7 @@ const Header = ({ toggleDarkMode, darkMode }: IHeader) => {
           </li>
         </ul>
       </div>
-      <div className="navbar-end">
+      <div className="navbar-end mr-4 md:mr-0">
         <label className="flex items-center text-xs font-thin md:mr-2">
           Dark Mode
           {darkMode ? (

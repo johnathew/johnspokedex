@@ -7,6 +7,9 @@ import Fallback from "@/components/Fallback";
 import { queryClient } from "@/App";
 import { PokeState } from "@/types/pokemonActionTypes";
 import { memo } from "react";
+import ScrollTopButton from "@/utils/scrollTopButton";
+import ScrollBottomButton from "@/utils/scrollBottomButton";
+import ScrollMidButton from "@/utils/scrollMidButton";
 
 
 const allPokemonQuery = () => ({
@@ -26,13 +29,18 @@ export function loader() {
 function SearchPokedex() {
   const loaderData = useLoaderData();
   return (
-    <Suspense fallback={<Fallback />}>
-      <Await resolve={(loaderData as PokeState).query}>
-        {(data) => {
-          return <DataTable columns={columns} data={data} />;
-        }}
-      </Await>
-    </Suspense>
+    <>
+      <Suspense fallback={<Fallback />}>
+        <Await resolve={(loaderData as PokeState).query}>
+          {(data) => {
+            return <DataTable columns={columns} data={data} />;
+          }}
+        </Await>
+      </Suspense>
+      <ScrollTopButton />
+      <ScrollMidButton />
+      <ScrollBottomButton />
+    </>
   );
 }
 
