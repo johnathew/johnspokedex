@@ -7,8 +7,6 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { useEffect, useRef } from "react";
 import PokemonCard from "@/components/PokemonCard";
 import React from "react";
-import { Input } from "@/components/ui/input";
-import { Label } from "@radix-ui/react-label";
 
 const Pokemon = () => {
   const typeStyles = {
