@@ -16,10 +16,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import React, { memo, useRef } from "react";
-import DebouncedInput, { Input } from "@/components/ui/input";
+import React, { useRef } from "react";
+import DebouncedInput from "@/components/ui/input";
 import { Label } from "@radix-ui/react-label";
-import ScrollButton from "@/utils/scrollTopButton";
+
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -62,7 +62,7 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="rounded-md shrink-0 border-black mb-0 relative pb-2 mx-auto bg-sky-700 dark:bg-slate-900 w-full h-auto drop-shadow-lg">
+    <div className="rounded-lg shrink-0 border-black mt-12 relative pb-2 mx-auto bg-sky-700 dark:bg-slate-900 w-full h-auto drop-shadow-lg">
       <div className="flex items-center justify-center w-auto py-4">
         <DebouncedInput
           placeholder="Find Pokemon..."
@@ -91,9 +91,9 @@ export function DataTable<TData, TValue>({
                     {header.isPlaceholder
                       ? null
                       : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
+                        header.column.columnDef.header,
+                        header.getContext()
+                      )}
                   </TableHead>
                 );
               })}
@@ -126,4 +126,4 @@ export function DataTable<TData, TValue>({
   );
 }
 
-export default memo(DataTable);
+export default DataTable

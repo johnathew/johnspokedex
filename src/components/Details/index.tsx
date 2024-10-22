@@ -34,7 +34,7 @@ const Details = ({ data }: { data: IPokemon }) => {
   });
 
   return (
-    <div className="dark:text-white flex-shrink-0 w-auto md:w-full h-auto pt-2 text-black flex justify-center items-center flex-col mb-5">
+    <div className="dark:text-white flex-shrink-0 w-auto md:w-full h-auto pt-2 text-black flex justify-center items-center flex-col mb-5 mt-12  ">
       <div className="flex max-w-fit h-auto md:w-full justify-center  dark:bg-slate-900 items-center bg-slate-200 rounded-md shadow-lg border-[2px] border-black bg-opacity-50 dark:border-yellow-300">
         <section
           className="flex flex-col w-auto text-center text-xs md:text-xl"

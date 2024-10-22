@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import pokeGif from "../assets/pokeGif.gif";
 import pokemonLogo from "../assets/pokemonLogo.png";
-import {MdArrowForward} from 'react-icons/md'
+import { MdArrowForward } from 'react-icons/md'
+
+
+
 function HomePage() {
   return (
     <main className="text-black dark:text-slate-200 flex flex-col mb-auto items-center  justify-center h-full w-full my-auto bg-sky-700 dark:bg-slate-800">

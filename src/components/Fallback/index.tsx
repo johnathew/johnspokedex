@@ -6,7 +6,7 @@ const Fallback = () => {
   const [progress, setProgress] = useState(20);
 
   useEffect(() => {
-    const timer = setTimeout(() => setProgress(80), 500);
+    const timer = setTimeout(() => setProgress(80), 200);
     return () => clearTimeout(timer);
   }, []);
   return (
